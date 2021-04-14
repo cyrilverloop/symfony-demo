@@ -1,0 +1,11 @@
+form:
+    description:
+        label: Description
+        placeholder: A description
+        title: The description of the product.
+    name:
+        label: Name
+        placeholder: The name
+        title: The name of the product.
+    submit:
+        value: Save

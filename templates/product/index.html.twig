@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle='Product index' %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Product index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>
+                        <a href="{{ path('product_show', {'id': product.id}) }}"
+                            class="btn btn-primary">
+                            show
+                        </a>
+
+                        <a href="{{ path('product_edit', {'id': product.id}) }}"
+                           class="btn btn-primary">
+                            edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('product_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle='Home' %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container jumbotron">
+        <h1 class="display-4">Symfony Demo!</h1>
+
+        <p class="lead">
+            This is a simple Symfony demo using PHP 8.0, Symfony 5.2, Encore, Bootstrap 4.6 and SASS.
+        </p>
+
+        <hr class="my-4" />
+
+        <p>
+            Click the button bellow to see a CRUD example.
+        </p>
+
+        <a class="btn btn-primary btn-lg" href="{{ path('product_index') }}" role="button">Show products</a>
+    </div>
+{% endblock %}

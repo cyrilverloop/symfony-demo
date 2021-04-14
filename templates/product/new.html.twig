@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle='New Product' %}
+
+
+{# Assets #}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ encore_entry_link_tags('product') }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Create new Product</h1>
+
+        {{ include('product/_form.html.twig') }}
+
+        <a href="{{ path('product_index') }}" class="btn btn-secondary">back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('product_delete', {'id': product.id}) }}"
+    id="delete_product_form" class="d-inline-block"
+    data-delete-message="{{ 'confirmDelete'|trans({}, translationContext) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}" />
+    <button class="btn btn-primary">Delete</button>
+</form>

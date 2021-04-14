@@ -1,0 +1,7 @@
+product:
+    description:
+        maxLength: The description is too long.
+    name:
+        maxLength: The name is too long.
+        notBlank: The name can not be empty.
+        uniqueEntity: This name is already used by an other product.

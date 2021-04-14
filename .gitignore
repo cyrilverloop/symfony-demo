@@ -1,0 +1,9 @@
+/build/logs/
+/build/phpunit/
+/node_modules/
+/public/build/
+/tools/
+/var/
+/vendor/
+/.env.local
+/.env.*.local
