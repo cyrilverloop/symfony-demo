@@ -42,7 +42,6 @@ The "-e test" option is to be use for the test environment.
 ```shellsession
 user@host symfony-demo$ ./bin/console doctrine:database:create [-e test]
 user@host symfony-demo$ ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
-user@host symfony-demo$ ./tools/phpunit -c build/phpunit.xml
 ```
 
 ### To run tests :
