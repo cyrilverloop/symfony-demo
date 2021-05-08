@@ -1,0 +1,19 @@
+services:
+  mariadb:
+    build: ./mariadb/
+    environment:
+      - COMPOSE_PROJECT_NAME=mariadb
+    volumes:
+      - ./mariadb/datas/:/var/lib/mysql/
+
+  php-apache:
+    build: .
+    depends_on:
+      - mariadb
+    environment:
+      - COMPOSE_PROJECT_NAME=symfony-demo
+    ports:
+      - "8888:80"
+    volumes:
+      - .:/var/www/html/
+    working_dir: /var/www/html/

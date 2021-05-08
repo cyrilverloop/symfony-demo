@@ -1,5 +1,6 @@
 /build/logs/
 /build/phpunit/
+/mariadb/datas/
 /node_modules/
 /public/build/
 /tools/
