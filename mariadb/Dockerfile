@@ -1,2 +1,0 @@
-FROM mariadb
-ENV MYSQL_ROOT_PASSWORD=root
