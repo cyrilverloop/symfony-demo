@@ -1,6 +1,6 @@
 # symfony-demo
 
-This is a simple Symfony 5.2 demo project testing on PHP 8.0+ and nodejs 15+.
+This is a simple Symfony 5.3 demo project testing on PHP 8.0+ and nodejs 16+.
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)

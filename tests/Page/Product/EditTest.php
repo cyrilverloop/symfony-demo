@@ -204,7 +204,7 @@ class EditTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $errorMessage = $notSavedCrawler->filter('span.form-error-message');
+        $errorMessage = $notSavedCrawler->filter('div.invalid-feedback');
 
         self::assertCount(1, $errorMessage, 'There must be an error message.');
 
@@ -259,9 +259,9 @@ class EditTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $errorMessage = $notSavedCrawler->filter('span.form-error-message');
+        $errorMessage = $notSavedCrawler->filter('div.invalid-feedback');
 
-        self::assertCount(1, $errorMessage, 'There must be a error message.');
+        self::assertCount(1, $errorMessage, 'There must be an error message.');
     }
 
 

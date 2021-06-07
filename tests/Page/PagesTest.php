@@ -28,7 +28,7 @@ class PagesTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Symfony Demo!');
-        $this->assertSelectorTextContains('.lead', 'a simple Symfony demo');
+        $this->assertSelectorTextContains('p', 'a simple Symfony demo');
     }
 
     /**
