@@ -81,21 +81,21 @@
         },
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "ba5d25a656aef8590030f2ef6c735c08a1931b1e"
+                "reference": "4ed43ee237f37c235a711c4fa5f7e664913f7ce0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/ba5d25a656aef8590030f2ef6c735c08a1931b1e",
-                "reference": "ba5d25a656aef8590030f2ef6c735c08a1931b1e",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/4ed43ee237f37c235a711c4fa5f7e664913f7ce0",
+                "reference": "4ed43ee237f37c235a711c4fa5f7e664913f7ce0",
                 "shasum": ""
             },
             "require": {
-                "doctrine/orm": "^2.8",
-                "php": ">=7.4"
+                "doctrine/orm": "^2.9",
+                "php": ">=8.0"
             },
             "type": "library",
             "autoload": {
@@ -113,12 +113,12 @@
                     "email": "cyril.verloop@webqard.fr"
                 }
             ],
-            "description": "Some default doctrine entity/fields requiring PHP 7.4+ and Doctrine 2.8.",
+            "description": "Some default doctrine entity/fields requiring PHP 8+ and Doctrine 2.9+.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/2.0.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/2.0.1"
             },
-            "time": "2021-09-13T18:38:49+00:00"
+            "time": "2021-09-13T18:54:50+00:00"
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
