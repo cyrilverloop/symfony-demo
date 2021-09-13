@@ -12,22 +12,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A product entity.
- *
- * @ORM\Entity(repositoryClass=ProductRepository::class)
- *
- * @UniqueEntity(
- *     fields={"name"},
- *     message="product.name.uniqueEntity"
- * )
  */
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[UniqueEntity(fields: 'name', message: 'product.name.uniqueEntity')]
 class Product extends IntId
 {
     // Properties :
 
     /**
      * @var string the name.
-     * @ORM\Column(type="string", length=50, unique=true)
      */
+    #[ORM\Column(type: "string", length: 50, unique: true)]
     #[Assert\Length(
         max: 50,
         minMessage: 'product.name.minLength',
@@ -37,8 +32,8 @@ class Product extends IntId
 
     /**
      * @var null|string the description.
-     * @ORM\Column(type="text", nullable=true)
      */
+    #[ORM\Column(type: "text", nullable: true)]
     #[Assert\Length(
         max: 300,
         maxMessage: 'product.name.maxLength',

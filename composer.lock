@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f282a2fd1cddbb5bde870683df9cc24b",
+    "content-hash": "de7989c55c5cb6a1c41301f21776c62f",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -81,16 +81,16 @@
         },
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "be8161ea8e50a1c20867d79353f1a1302e772a74"
+                "reference": "ba5d25a656aef8590030f2ef6c735c08a1931b1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/be8161ea8e50a1c20867d79353f1a1302e772a74",
-                "reference": "be8161ea8e50a1c20867d79353f1a1302e772a74",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/ba5d25a656aef8590030f2ef6c735c08a1931b1e",
+                "reference": "ba5d25a656aef8590030f2ef6c735c08a1931b1e",
                 "shasum": ""
             },
             "require": {
@@ -116,9 +116,9 @@
             "description": "Some default doctrine entity/fields requiring PHP 7.4+ and Doctrine 2.8.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/1.1.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/2.0.0"
             },
-            "time": "2021-03-14T18:52:15+00:00"
+            "time": "2021-09-13T18:38:49+00:00"
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
@@ -3499,16 +3499,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.15.3",
+            "version": "v1.15.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "f16f10772422ace36dc76d5d5c7a682c8b925c0c"
+                "reference": "9a22ef2a75609a4d3717db784d923a7a6b347bc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/f16f10772422ace36dc76d5d5c7a682c8b925c0c",
-                "reference": "f16f10772422ace36dc76d5d5c7a682c8b925c0c",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/9a22ef2a75609a4d3717db784d923a7a6b347bc5",
+                "reference": "9a22ef2a75609a4d3717db784d923a7a6b347bc5",
                 "shasum": ""
             },
             "require": {
@@ -3547,7 +3547,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v1.15.3"
+                "source": "https://github.com/symfony/flex/tree/v1.15.4"
             },
             "funding": [
                 {
@@ -3563,7 +3563,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-06T12:45:00+00:00"
+            "time": "2021-09-13T14:49:33+00:00"
         },
         {
             "name": "symfony/form",

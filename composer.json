@@ -8,7 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.2",
-        "cyril-verloop/doctrine-entities": "^1.1",
+        "cyril-verloop/doctrine-entities": "^2.0",
         "cyril-verloop/symfony-twig-templates": "^1.1",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.4",
