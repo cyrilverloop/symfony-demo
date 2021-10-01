@@ -18,18 +18,18 @@ jobs:
       id: composer-cache
       uses: actions/cache@v2
       with:
-        path: vendor
+        path: app/vendor
         key: composer-lock-${{ hashFiles('**/composer.lock') }}
 
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: echo 'DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"' > .env.local && composer install --prefer-dist --no-progress --no-suggest
+      run: cd app/ && echo 'DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"' > .env.local && composer install --prefer-dist --no-progress --no-suggest
 
     - name: Cache phive packages
       id: phive-tools-cache
       uses: actions/cache@v2
       with:
-        path: tools
+        path: app/tools
         key: phive-tools-${{ hashFiles('**/phive.xml') }}
 
     - name: Install phive tools
@@ -57,7 +57,7 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run php lint
-      run: find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
+      run: cd app/ && find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
 
   phpcs:
     needs: phplint
@@ -72,7 +72,7 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run phpcs
-      run: ./tools/phpcs --standard=PSR12 --extensions=php --ignore=*/Kernel.php ./src/
+      run: cd app/ && ./tools/phpcs --standard=PSR12 --extensions=php --ignore=*/Kernel.php ./src/
 
   test:
     needs: phplint
@@ -90,13 +90,13 @@ jobs:
       id: npm-cache
       uses: actions/cache@v2
       with:
-        path: node_modules
+        path: app/node_modules
         key: npm-${{ hashFiles('**/package-lock.json') }}
 
     - uses: actions/setup-node@v2
     - name: Install npm package
       if: steps.npm-cache.outputs.cache-hit != 'true'
-      run: npm i
+      run: cd app/ && npm i
 
     - name: Install assets
       run: npm run dev
@@ -117,4 +117,4 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run Psalm
-      run: cd build/ && ../tools/psalm --shepherd --no-cache
+      run: cd app/build/ && ../tools/psalm --shepherd --no-cache

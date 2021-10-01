@@ -1,0 +1,20 @@
+services:
+    mariadb:
+        environment:
+            - MARIADB_ROOT_PASSWORD_FILE=/root/mysql-root-password.txt
+        image: mariadb
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mariadb/datas/:/var/lib/mysql/
+            - ./mariadb/.password:/root/mysql-root-password.txt
+
+    app:
+        build: ./app/
+        depends_on:
+            - mariadb
+        ports:
+            - "80:80"
+        volumes:
+            - ./app/:/var/www/html/
+        working_dir: /var/www/html/
