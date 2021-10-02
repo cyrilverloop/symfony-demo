@@ -99,10 +99,10 @@ jobs:
       run: cd app/ && npm i
 
     - name: Install assets
-      run: npm run dev
+      run: cd app/ && npm run dev
 
     - name: Run PHPUnit test
-      run: ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./build/phpunit.xml
+      run: cd app / && ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./build/phpunit.xml
 
   static-analysis:
     needs: phplint
