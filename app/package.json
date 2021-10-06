@@ -9,8 +9,8 @@
     },
     "devDependencies": {
         "@symfony/webpack-encore": "^1.6.1",
-        "bootstrap": "^5.1.1",
-        "core-js": "^3.18.1",
+        "bootstrap": "^5.1.2",
+        "core-js": "^3.18.2",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.42.1",
         "sass-loader": "^12.1.0",
