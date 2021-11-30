@@ -53,7 +53,7 @@ class ProductTest extends TestCase
     }
 
     /**
-     * Test that the name can be accessed.
+     * Test that the description can be accessed.
      * @return void
      *
      * @covers ::getDescription
