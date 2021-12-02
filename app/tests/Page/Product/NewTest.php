@@ -181,7 +181,8 @@ class NewTest extends WebTestCase
 
         self::assertCount(1, $errorMessage, 'There must be an error message.');
 
-        $productRepository = static::$container->get(ProductRepository::class);
+        self::bootKernel();
+        $productRepository = static::getContainer()->get(ProductRepository::class);
         $products = $productRepository->findAll();
 
         self::assertEmpty($products, 'The product must not be added.');
@@ -220,7 +221,8 @@ class NewTest extends WebTestCase
 
         self::assertCount(1, $errorMessage, 'There must be an error message.');
 
-        $productRepository = static::$container->get(ProductRepository::class);
+        self::bootKernel();
+        $productRepository = static::getContainer()->get(ProductRepository::class);
         $products = $productRepository->findAll();
 
         self::assertCount(1, $products, 'The second product must not be added.');
