@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
-  <phar name="phpcs" version="^3.5.8" installed="3.6.1" location="./tools/phpcs" copy="true"/>
-  <phar name="phpcbf" version="^3.5.8" installed="3.6.1" location="./tools/phpcbf" copy="true"/>
+  <phar name="phpcs" version="^3.5.8" installed="3.6.2" location="./tools/phpcs" copy="true"/>
+  <phar name="phpcbf" version="^3.5.8" installed="3.6.2" location="./tools/phpcbf" copy="true"/>
   <phar name="phpunit" version="^9.5.2" installed="9.5.10" location="./tools/phpunit" copy="true"/>
   <phar name="psalm" version="^4.6.2" installed="4.15.0" location="./tools/psalm" copy="true"/>
 </phive>
