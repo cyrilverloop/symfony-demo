@@ -58,8 +58,8 @@ The "-e test" option is to for the test environment which uses Sqlite.
 
 Install node dependencies and build the assets :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app npm i
-user@host symfony-demo$ docker compose run --rm app npm run build
+user@host symfony-demo$ docker compose run --rm node npm i
+user@host symfony-demo$ docker compose run --rm node npm run build
 ```
 
 ## Usage
