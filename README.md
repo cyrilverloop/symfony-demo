@@ -17,51 +17,59 @@ user@host projects$ git clone https://github.com/cyrilverloop/symfony-demo.git
 user@host projects$ cd symfony-demo
 ```
 
-This demo uses 2 Docker containers.
-One with the `php:apache` image and the other with the `mariadb` image.
-You need to define a mariadb root password in the `./mariadb/.password` file (see `./mariadb/.password.dist` example).
-Then, you can make these containers up and running with one docker compose command :
-```shellsession
-user@host symfony-demo$ docker compose up
-```
-You can execute any command for your app through :
-```shellsession
-user@host symfony-demo$ docker compose exec app [COMMAND]
-```
-Alternatively, you can access the `app` container and execute your commands once inside :
-```shellsession
-user@host symfony-demo$ docker exec -it symfony-demo-app-1 bash
-```
-The following commands are executed outside the containers.
+This demo uses 4 Docker images based on :
+1. `mariadb` to run the database;
+2. `php:apache` to run the web server;
+3. `composer` to install PHP dependencies;
+4. `node:alpine` to install node dependencies.
 
-Define the database configuration (see `.env` or `.env.local.dist`).
+### Building the image
 
-### Create the database
-
-The "-e test" option is to be use for the test environment.
+Define a mariadb root password in the `./mariadb/.password` file (see `./mariadb/.password.dist` example)
+and build the app image :
 ```shellsession
-user@host symfony-demo$ docker compose exec app ./bin/console doctrine:database:create [-e test]
-user@host symfony-demo$ docker compose exec app ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
+user@host symfony-demo$ docker compose build
 ```
 
-### For production
-
+### Installing PHP dependencies
+Define the database configuration for Symfony (see `./app/.env` or `./app/.env.local.dist`)
+and install the PHP dependencies :
 ```shellsession
-user@host symfony-demo$ docker compose exec app composer install -o --no-dev
-user@host symfony-demo$ docker compose exec app npm i
-user@host symfony-demo$ docker compose exec app npm run build
+user@host symfony-demo$ docker compose run --rm app composer install -o [--no-dev]
+```
+The "--no-dev" option is for the production environment.
+
+For the development and the test environments only :
+```shellsession
+user@host symfony-demo$ docker compose run --rm app phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192
 ```
 
-### For development / test
+### Creating the database
+
 
 ```shellsession
-user@host symfony-demo$ docker compose exec app composer install -o
-user@host symfony-demo$ docker compose exec app npm i
-user@host symfony-demo$ docker compose exec app npm run dev
-user@host symfony-demo$ docker compose exec app phive install
+user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:database:create [-e test]
+user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
+```
+The "-e test" option is to for the test environment which uses Sqlite.
+
+
+### Building assets
+
+Install node dependencies and build the assets :
+```shellsession
+user@host symfony-demo$ docker compose run --rm app npm i
+user@host symfony-demo$ docker compose run --rm app npm run build
 ```
 
-Now, the demo will be available in your browser through : http://127.0.0.1/index.php/
+## Usage
+
+Once the installation is complete, you can start the containers with :
+```shellsession
+user@host symfony-demo$ docker compose up -d
+```
+
+The demo will be available in your browser through : http://127.0.0.1/index.php/
 
 To stop the containers :
 ```shellsession
@@ -71,7 +79,9 @@ user@host symfony-demo$ docker compose down
 
 ## Tests
 
-To run the tests you need to create the database with the test environment which uses Sqlite.
+First, you need to [configure the app](#installing-php-dependencies)
+and [create the database](#creating-the-database) for the test environment.
+Then, run the tests :
 ```shellsession
-user@host symfony-demo$ docker compose exec app ./tools/phpunit -c build/phpunit.xml
+user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c build/phpunit.xml
 ```

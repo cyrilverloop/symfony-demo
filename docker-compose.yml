@@ -11,10 +11,16 @@ services:
 
     app:
         build: ./app/
-        depends_on:
-            - mariadb
         ports:
             - "80:80"
         volumes:
             - ./app/:/var/www/html/
         working_dir: /var/www/html/
+
+    node:
+        image: node:alpine
+        profiles:
+            - node
+        volumes:
+            - ./app/:/var/www/
+        working_dir: /var/www/
