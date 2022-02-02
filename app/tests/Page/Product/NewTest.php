@@ -28,7 +28,6 @@ class NewTest extends WebTestCase
     /**
      * Tests that the page to create a new product
      * can be displayed.
-     * @return void
      *
      * @covers ::new
      * @uses \App\Entity\Product
@@ -52,7 +51,6 @@ class NewTest extends WebTestCase
     /**
      * The assertions for the input of the name.
      * @param \Symfony\Component\DomCrawler\Crawler $nameInput the crawler.
-     * @return void
      */
     private function assertHasAnInputForName(Crawler $nameInput): void
     {
@@ -69,7 +67,6 @@ class NewTest extends WebTestCase
     /**
      * The assertions for the input of the description.
      * @param \Symfony\Component\DomCrawler\Crawler $nameInput the crawler.
-     * @return void
      */
     private function assertHasAnInputForDescription(Crawler $nameInput): void
     {
@@ -82,7 +79,6 @@ class NewTest extends WebTestCase
 
     /**
      * Tests that new products can be created.
-     * @return void
      *
      * @covers ::new
      * @uses \App\Controller\ProductController::index
@@ -156,7 +152,6 @@ class NewTest extends WebTestCase
      * Tests that new products can not be created
      * with invalid product datas.
      * @param mixed[] $productDatas invalid product datas.
-     * @return void
      *
      * @covers ::new
      * @uses \App\Controller\ProductController::index
@@ -191,7 +186,6 @@ class NewTest extends WebTestCase
 
     /**
      * Tests that a product name can be unique.
-     * @return void
      *
      * @covers ::new
      * @uses \App\Controller\ProductController::index

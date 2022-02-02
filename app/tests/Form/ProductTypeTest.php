@@ -15,7 +15,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Tests the product form.
- * @package \App\Tests\Form
  *
  * @coversDefaultClass \App\Form\ProductType
  */
@@ -33,7 +32,6 @@ class ProductTypeTest extends TypeTestCase
 
     /**
      * Initialises tests.
-     * @return void
      */
     public function setUp(): void
     {
@@ -43,7 +41,6 @@ class ProductTypeTest extends TypeTestCase
 
     /**
      * Test that the form can be built.
-     * @return void
      *
      * @covers ::buildForm
      */
@@ -61,7 +58,6 @@ class ProductTypeTest extends TypeTestCase
     /**
      * Asserts that the name input is present.
      * @param \Symfony\Component\Form\FormBuilder $builder the form builder.
-     * @return void
      */
     private function assertHasNameInput(FormBuilder $builder): void
     {
@@ -93,7 +89,6 @@ class ProductTypeTest extends TypeTestCase
     /**
      * Asserts that the description textarea is present.
      * @param \Symfony\Component\Form\FormBuilder $builder the form builder.
-     * @return void
      */
     private function assertHasDescriptionTextarea(FormBuilder $builder): void
     {
@@ -121,7 +116,6 @@ class ProductTypeTest extends TypeTestCase
     /**
      * Asserts that the submit button is present.
      * @param \Symfony\Component\Form\FormBuilder $builder the form builder.
-     * @return void
      */
     private function assertHasSubmitButton(FormBuilder $builder): void
     {
@@ -143,7 +137,6 @@ class ProductTypeTest extends TypeTestCase
 
     /**
      * Test that the options can be configured.
-     * @return void
      *
      * @covers ::configureOptions
      */

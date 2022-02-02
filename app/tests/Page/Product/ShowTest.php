@@ -22,7 +22,6 @@ class ShowTest extends WebTestCase
 
     /**
      * Tests that product can be shown.
-     * @return void
      *
      * @covers ::show
      * @uses \App\Entity\Product
@@ -84,7 +83,6 @@ class ShowTest extends WebTestCase
     /**
      * Tests that the page can be browsed
      * back to the product index page.
-     * @return void
      *
      * @covers ::show
      * @uses \App\Controller\ProductController::index
@@ -111,7 +109,6 @@ class ShowTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the show to the edit page.
-     * @return void
      *
      * @covers ::show
      * @uses \App\Controller\ProductController::edit
@@ -137,7 +134,6 @@ class ShowTest extends WebTestCase
 
     /**
      * Tests that a product can be deleted.
-     * @return void
      *
      * @covers ::delete
      * @covers ::show

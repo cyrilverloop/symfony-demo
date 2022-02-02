@@ -16,7 +16,6 @@ trait ProductFixture
     /**
      * Adds a product fixture
      * to the database.
-     * @return void
      */
     public function addProductFixture(): void
     {

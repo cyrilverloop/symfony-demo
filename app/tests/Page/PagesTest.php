@@ -17,7 +17,6 @@ class PagesTest extends WebTestCase
 
     /**
      * Test that the homepage can be displayed.
-     * @return void
      *
      * @covers ::home
      */
@@ -33,7 +32,6 @@ class PagesTest extends WebTestCase
 
     /**
      * Test that a user can browse to the product list.
-     * @return void
      *
      * @covers ::home
      * @covers \App\Repository\ProductRepository::__construct

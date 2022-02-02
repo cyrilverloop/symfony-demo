@@ -26,7 +26,6 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be edited.
-     * @return void
      *
      * @covers ::edit
      * @uses \App\Entity\Product
@@ -52,7 +51,6 @@ class EditTest extends WebTestCase
     /**
      * The assertions for the input of the name.
      * @param \Symfony\Component\DomCrawler\Crawler $nameInput the crawler.
-     * @return void
      */
     private function assertHasAnInputForName(Crawler $nameInput): void
     {
@@ -70,7 +68,6 @@ class EditTest extends WebTestCase
     /**
      * The assertions for the input of the description.
      * @param \Symfony\Component\DomCrawler\Crawler $nameInput the crawler.
-     * @return void
      */
     private function assertHasAnInputForDescription(Crawler $nameInput): void
     {
@@ -85,7 +82,6 @@ class EditTest extends WebTestCase
     /**
      * Tests that the page can be browsed
      * back to the product index page.
-     * @return void
      *
      * @covers ::edit
      * @uses \App\Controller\ProductController::index
@@ -109,7 +105,6 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be updated.
-     * @return void
      *
      * @covers ::edit
      * @uses \App\Controller\ProductController::index
@@ -184,7 +179,6 @@ class EditTest extends WebTestCase
      * Tests that products can not be updated
      * with invalid product datas.
      * @param mixed[] $productDatas invalid product datas.
-     * @return void
      *
      * @covers ::edit
      * @uses \App\Entity\Product
@@ -227,7 +221,6 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product name can be unique.
-     * @return void
      *
      * @covers ::edit
      * @uses \App\Entity\Product
@@ -267,7 +260,6 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be deleted.
-     * @return void
      *
      * @covers ::delete
      * @covers ::edit

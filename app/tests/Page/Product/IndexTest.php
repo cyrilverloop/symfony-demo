@@ -23,7 +23,6 @@ class IndexTest extends WebTestCase
 
     /**
      * Tests that product index can be displayed without record.
-     * @return void
      *
      * @covers ::index
      * @uses \App\Repository\ProductRepository::__construct
@@ -42,7 +41,6 @@ class IndexTest extends WebTestCase
     /**
      * The assertions for the table.
      * @param \Symfony\Component\DomCrawler\Crawler $crawler the crawler.
-     * @return void
      */
     private function assertHasTable(Crawler $crawler): void
     {
@@ -63,7 +61,6 @@ class IndexTest extends WebTestCase
 
     /**
      * Tests that product index can be displayed with records.
-     * @return void
      *
      * @covers ::index
      * @uses \App\Entity\Product
@@ -96,7 +93,6 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "new" page.
-     * @return void
      *
      * @covers ::index
      * @uses \App\Controller\ProductController::new
@@ -121,7 +117,6 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "show" page.
-     * @return void
      *
      * @covers ::index
      * @uses \App\Controller\ProductController::show
@@ -154,7 +149,6 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "show" page.
-     * @return void
      *
      * @covers ::index
      * @uses \App\Controller\ProductController::edit

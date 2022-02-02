@@ -27,7 +27,6 @@ class ProductTest extends TestCase
 
     /**
      * Initialises tests.
-     * @return void
      */
     public function setUp(): void
     {
@@ -36,7 +35,6 @@ class ProductTest extends TestCase
 
     /**
      * Test that the name can be accessed.
-     * @return void
      *
      * @covers ::getName
      * @covers ::setName
@@ -54,7 +52,6 @@ class ProductTest extends TestCase
 
     /**
      * Test that the description can be accessed.
-     * @return void
      *
      * @covers ::getDescription
      * @covers ::setDescription
