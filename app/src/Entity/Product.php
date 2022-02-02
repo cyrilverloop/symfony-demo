@@ -83,7 +83,6 @@ class Product extends IntId
     /**
      * Changes the name.
      * @param string $name the name.
-     * @return void
      */
     public function setName(string $name): void
     {
@@ -93,7 +92,6 @@ class Product extends IntId
     /**
      * Changes the description.
      * @param null|string $description the description.
-     * @return void
      */
     public function setDescription(?string $description): void
     {

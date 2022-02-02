@@ -22,7 +22,6 @@ class ProductType extends AbstractType
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder the form builder.
      * @param array $options the options.
-     * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -58,7 +57,6 @@ class ProductType extends AbstractType
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver the options resolver.
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

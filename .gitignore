@@ -1,4 +1,6 @@
+/app/build/cache/
 /app/build/logs/
+/app/build/phpdoc/
 /app/build/phpunit/
 /app/node_modules/
 /app/public/build/

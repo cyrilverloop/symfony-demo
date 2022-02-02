@@ -41,7 +41,7 @@ The "--no-dev" option is for the production environment.
 
 For the development and the test environments only :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192
+user@host symfony-demo$ docker compose run --rm app phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,67F861C3D889C656
 ```
 
 ### Creating the database
@@ -85,3 +85,12 @@ Then, run the tests :
 ```shellsession
 user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c build/phpunit.xml
 ```
+
+
+## PHPDoc
+
+To generate the PHPDoc, use this command after [installing phive dependencies](#installing-php-dependencies) :
+```shellsession
+user@host symfony-demo$ docker compose run --rm app ./tools/phpDocumentor --config ./build/phpdoc.xml
+```
+The generated HTML documentation will be in `./app/build/phpdoc/`.
