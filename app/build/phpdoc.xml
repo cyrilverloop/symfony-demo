@@ -11,6 +11,8 @@
         <output>./phpdoc</output>
     </paths>
 
+    <title>Symfony demo</title>
+
     <version number="latest">
         <api>
             <ignore>
