@@ -7501,21 +7501,22 @@
     "packages-dev": [
         {
             "name": "dama/doctrine-test-bundle",
-            "version": "v6.7.4",
+            "version": "v6.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dmaicher/doctrine-test-bundle.git",
-                "reference": "b1626f0e63a75a335aac49f6932d33018a6c5e2a"
+                "reference": "af6f8e8c56fcfdf2ae039b97607883961a14af9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dmaicher/doctrine-test-bundle/zipball/b1626f0e63a75a335aac49f6932d33018a6c5e2a",
-                "reference": "b1626f0e63a75a335aac49f6932d33018a6c5e2a",
+                "url": "https://api.github.com/repos/dmaicher/doctrine-test-bundle/zipball/af6f8e8c56fcfdf2ae039b97607883961a14af9c",
+                "reference": "af6f8e8c56fcfdf2ae039b97607883961a14af9c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.9.3 || ^3.0",
                 "doctrine/doctrine-bundle": "^1.11 || ^2.0",
+                "ext-json": "*",
                 "php": "^7.1 || ^8.0",
                 "psr/cache": "^1.0 || ^2.0 || ^3.0",
                 "symfony/cache": "^4.4 || ^5.3 || ^6.0",
@@ -7561,9 +7562,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dmaicher/doctrine-test-bundle/issues",
-                "source": "https://github.com/dmaicher/doctrine-test-bundle/tree/v6.7.4"
+                "source": "https://github.com/dmaicher/doctrine-test-bundle/tree/v6.7.5"
             },
-            "time": "2022-01-26T19:40:56+00:00"
+            "time": "2022-02-08T16:00:51+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7738,16 +7739,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "bae7c545bef187884426f042434e561ab1ddb182"
+                "reference": "15a90844ad40f127afd244c0cad228de2a80052a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/bae7c545bef187884426f042434e561ab1ddb182",
-                "reference": "bae7c545bef187884426f042434e561ab1ddb182",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/15a90844ad40f127afd244c0cad228de2a80052a",
+                "reference": "15a90844ad40f127afd244c0cad228de2a80052a",
                 "shasum": ""
             },
             "require": {
@@ -7783,9 +7784,9 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
-                "source": "https://github.com/phar-io/version/tree/3.1.0"
+                "source": "https://github.com/phar-io/version/tree/3.1.1"
             },
-            "time": "2021-02-23T14:00:09+00:00"
+            "time": "2022-02-07T21:56:48+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -8234,11 +8235,11 @@
                 }
             },
             "autoload": {
-                "classmap": [
-                    "src/"
-                ],
                 "files": [
                     "src/Framework/Assert/Functions.php"
+                ],
+                "classmap": [
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
