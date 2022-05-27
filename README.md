@@ -4,7 +4,7 @@ This is a simple Symfony 6.1 demo project using PHP 8.1 and NodeJs 18.
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
-[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8-%23777BB4?logo=php&style=flat)](https://www.php.net/)
+[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.1-%23777BB4?logo=php&style=flat))](https://www.php.net/)
 
 
 ## Installation
