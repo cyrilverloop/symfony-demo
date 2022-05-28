@@ -83,7 +83,7 @@ First, you need to [configure the app](#installing-php-dependencies)
 and [create the database](#creating-the-database) for the test environment.
 Then, run the tests :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c build/phpunit.xml
+user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c ./ci/phpunit.xml
 ```
 
 
@@ -91,6 +91,6 @@ user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c build/php
 
 To generate the PHPDoc, use this command after [installing phive dependencies](#installing-php-dependencies) :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/phpDocumentor --config ./build/phpdoc.xml
+user@host symfony-demo$ docker compose run --rm app ./tools/phpDocumentor --config ./ci/phpdoc.xml
 ```
-The generated HTML documentation will be in `./app/build/phpdoc/`.
+The generated HTML documentation will be in `./app/ci/phpdoc/`.

@@ -1,7 +1,7 @@
-/app/build/cache/
-/app/build/logs/
-/app/build/phpdoc/
-/app/build/phpunit/
+/app/ci/cache/
+/app/ci/logs/
+/app/ci/phpdoc/
+/app/ci/phpunit/
 /app/node_modules/
 /app/public/build/
 /app/tools/

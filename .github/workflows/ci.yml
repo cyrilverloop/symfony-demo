@@ -102,7 +102,7 @@ jobs:
       run: cd app/ && npm run dev
 
     - name: Run PHPUnit test
-      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./build/phpunit.xml
+      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
 
   static-analysis:
     needs: phplint
@@ -117,4 +117,4 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run Psalm
-      run: cd app/build/ && ../tools/psalm --shepherd --no-cache
+      run: cd app/ci/ && ../tools/psalm --shepherd --no-cache
