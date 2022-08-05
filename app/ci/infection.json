@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/infection/infection/0.26.13/resources/schema.json",
+    "source": {
+        "directories": [
+            "./src/"
+        ]
+    },
+    "phpUnit": {
+        "configDir": "./",
+        "customPath": "./tools/phpunit"
+    },
+    "logs": {
+        "text": "./ci/infection/infection.log",
+        "html": "./ci/infection/infection.html",
+        "summary": "./ci/infection/summary.log",
+        "json": "./ci/infection/infection-log.json",
+        "perMutator": "./ci/infection/per-mutator.md"
+    }
+}
