@@ -49,16 +49,16 @@
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/symfony-twig-templates.git",
-                "reference": "4cf7cc8dcf5b3ff212642d80345e5352266aa20c"
+                "reference": "1ce456b36450ed63922244b386ebddd21defab08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/symfony-twig-templates/zipball/4cf7cc8dcf5b3ff212642d80345e5352266aa20c",
-                "reference": "4cf7cc8dcf5b3ff212642d80345e5352266aa20c",
+                "url": "https://api.github.com/repos/cyrilverloop/symfony-twig-templates/zipball/1ce456b36450ed63922244b386ebddd21defab08",
+                "reference": "1ce456b36450ed63922244b386ebddd21defab08",
                 "shasum": ""
             },
             "type": "library",
@@ -75,9 +75,9 @@
             "description": "A base Twig template for Symfony.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/symfony-twig-templates/issues",
-                "source": "https://github.com/cyrilverloop/symfony-twig-templates/tree/1.1.1"
+                "source": "https://github.com/cyrilverloop/symfony-twig-templates/tree/1.1.2"
             },
-            "time": "2021-03-02T15:34:53+00:00"
+            "time": "2022-08-05T14:43:13+00:00"
         },
         {
             "name": "doctrine/annotations",
