@@ -1,4 +1,3 @@
-/app/ci/cache/
 /app/ci/logs/
 /app/ci/phpdoc/
 /app/ci/phpunit/

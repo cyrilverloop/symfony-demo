@@ -6,9 +6,9 @@
     xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
     >
     <paths>
-        <cache>./cache</cache>
+        <cache>../var/cache/phpdoc/</cache>
 
-        <output>./phpdoc</output>
+        <output>./phpdoc/</output>
     </paths>
 
     <title>Symfony demo</title>

@@ -10,7 +10,8 @@
         verbose="true"
         colors="true"
 >
-    <coverage processUncoveredFiles="true">
+    <coverage processUncoveredFiles="true"
+            cacheDirectory="../var/cache/phpunit/">
         <include>
             <directory suffix=".php">../src</directory>
         </include>
