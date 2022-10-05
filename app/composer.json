@@ -7,7 +7,7 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "cyril-verloop/doctrine-entities": "^5.0",
+        "cyril-verloop/doctrine-entities": "^6.0",
         "cyril-verloop/symfony-twig-templates": "^1.1",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.6",

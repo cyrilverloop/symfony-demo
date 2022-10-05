@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5536556d07f5cde64eb0927f289af460",
+    "content-hash": "2c0339ff5a293a68300b813fa2ca347d",
     "packages": [
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "5.0.1",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "8ac400a492bb6c5f6d65640e085fbd336dc8223e"
+                "reference": "6b5e0eb9e9a0b39d615965451744cbbb5293e368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/8ac400a492bb6c5f6d65640e085fbd336dc8223e",
-                "reference": "8ac400a492bb6c5f6d65640e085fbd336dc8223e",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/6b5e0eb9e9a0b39d615965451744cbbb5293e368",
+                "reference": "6b5e0eb9e9a0b39d615965451744cbbb5293e368",
                 "shasum": ""
             },
             "require": {
@@ -40,12 +40,12 @@
                     "email": "cyril.verloop@webqard.fr"
                 }
             ],
-            "description": "Some default doctrine entity/fields requiring PHP 8.1+ and Doctrine 2.11+.",
+            "description": "Some default doctrine entity/fields requiring PHP 8.1+ and Doctrine 2.13+.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/5.0.1"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/6.0.0"
             },
-            "time": "2022-09-22T13:47:54+00:00"
+            "time": "2022-10-05T11:39:44+00:00"
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
