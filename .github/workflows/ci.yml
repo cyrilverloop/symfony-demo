@@ -9,7 +9,7 @@ on:
 jobs:
   install:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v2
@@ -46,7 +46,7 @@ jobs:
 
   phplint:
     needs: install
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/download-artifact@v2
@@ -61,7 +61,7 @@ jobs:
 
   phpcs:
     needs: phplint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/download-artifact@v2
@@ -76,7 +76,7 @@ jobs:
 
   test:
     needs: phplint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/download-artifact@v2
@@ -106,7 +106,7 @@ jobs:
 
   static-analysis:
     needs: phplint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/download-artifact@v2
