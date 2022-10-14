@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: app/vendor
         key: composer-lock-${{ hashFiles('**/composer.lock') }}
@@ -27,7 +27,7 @@ jobs:
 
     - name: Cache phive packages
       id: phive-tools-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: app/tools
         key: phive-tools-${{ hashFiles('**/phive.xml') }}
@@ -39,7 +39,7 @@ jobs:
     - name: 'Tar project'
       run: tar -cf project.tar .
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: installed-project
         path: project.tar
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: installed-project
 
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: installed-project
 
@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: installed-project
 
@@ -88,12 +88,12 @@ jobs:
 
     - name: Cache npm packages
       id: npm-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: app/node_modules
         key: npm-${{ hashFiles('**/package-lock.json') }}
 
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
     - name: Install npm package
       if: steps.npm-cache.outputs.cache-hit != 'true'
       run: cd app/ && npm i
@@ -109,7 +109,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: installed-project
 
