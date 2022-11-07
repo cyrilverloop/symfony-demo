@@ -3,7 +3,7 @@
   <phar name="phpcs" version="^3.5.8" installed="3.7.1" location="./tools/phpcs" copy="true"/>
   <phar name="phpcbf" version="^3.5.8" installed="3.7.1" location="./tools/phpcbf" copy="true"/>
   <phar name="phpunit" version="^9.5.2" installed="9.5.26" location="./tools/phpunit" copy="true"/>
-  <phar name="psalm" version="^4.6.2" installed="4.29.0" location="./tools/psalm" copy="true"/>
+  <phar name="psalm" version="^4.6.2" installed="4.30.0" location="./tools/psalm" copy="true"/>
   <phar name="phpdocumentor" version="^3.3.0" installed="3.3.1" location="./tools/phpDocumentor" copy="true"/>
   <phar name="infection" version="^0.26.13" installed="0.26.16" location="./tools/infection" copy="true"/>
 </phive>
