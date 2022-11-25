@@ -281,5 +281,10 @@ class EditTest extends WebTestCase
         $client->followRedirect();
 
         $this->assertResponseIsSuccessful();
+
+        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
+        $deletedProduct = $entityManager->find(Product::class, 1);
+
+        self::assertNull($deletedProduct, 'The Product has not been deleted.');
     }
 }
