@@ -89,7 +89,7 @@ The generated outputs will be in `./ci/phpunit/`.
 
 And, run the mutation tests :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/infection -c ./ci/infection.json
+user@host symfony-demo$ docker compose run --rm app ./tools/infection -c./ci/infection.json
 ```
 The generated outputs will be in `./ci/infection/`.
 
