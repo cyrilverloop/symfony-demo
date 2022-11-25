@@ -34,6 +34,15 @@ class ProductTest extends TestCase
     }
 
     /**
+     * Test that the identifier
+     * is initialised to null.
+     */
+    public function testCanInitialiseIdentifierToNull(): void
+    {
+        self::assertNull($this->product->getId());
+    }
+
+    /**
      * Test that the name can be accessed.
      *
      * @covers ::getName
