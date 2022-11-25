@@ -2,6 +2,7 @@
 /app/ci/logs/
 /app/ci/phpdoc/
 /app/ci/phpunit/
+/app/ci/psalm/
 /app/node_modules/
 /app/public/build/
 /app/tools/
