@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Product;
 
+use App\Entity\Product;
 use App\Tests\Page\Product\ProductFixture;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -155,5 +156,10 @@ class ShowTest extends WebTestCase
         $client->followRedirect();
 
         $this->assertResponseIsSuccessful();
+
+        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
+        $deletedProduct = $entityManager->find(Product::class, 1);
+
+        self::assertNull($deletedProduct, 'The Product has not been deleted.');
     }
 }
