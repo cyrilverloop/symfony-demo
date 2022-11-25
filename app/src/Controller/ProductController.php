@@ -26,7 +26,12 @@ class ProductController extends AbstractController
      * @param \App\Repository\ProductRepository $productRepository the product repository.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
-    #[Route('/', name: 'product_index', methods: ['GET'])]
+    #[Route(
+        '/',
+        name: 'product_index',
+        /** @infection-ignore-all */
+        methods: ['GET']
+    )]
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('product/index.html.twig', [
@@ -39,7 +44,12 @@ class ProductController extends AbstractController
      * @param \Symfony\Component\HttpFoundation\Request $request the request.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
-    #[Route('/new', name: 'product_new', methods: ['GET', 'POST'])]
+    #[Route(
+        '/new',
+        name: 'product_new',
+        /** @infection-ignore-all */
+        methods: ['GET', 'POST']
+    )]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $product = new Product();
@@ -64,7 +74,12 @@ class ProductController extends AbstractController
      * @param \App\Entity\Product $product the product.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
-    #[Route('/{id}', name: 'product_show', methods: ['GET'])]
+    #[Route(
+        '/{id}',
+        name: 'product_show',
+        /** @infection-ignore-all */
+        methods: ['GET']
+    )]
     public function show(Product $product): Response
     {
         return $this->render('product/show.html.twig', [
@@ -78,7 +93,12 @@ class ProductController extends AbstractController
      * @param \App\Entity\Product $product the product.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
-    #[Route('/{id}/edit', name: 'product_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        '/{id}/edit',
+        name: 'product_edit',
+        /** @infection-ignore-all */
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProductType::class, $product);
@@ -102,7 +122,12 @@ class ProductController extends AbstractController
      * @param \App\Entity\Product $product the product.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
-    #[Route('/{id}', name: 'product_delete', methods: ['POST'])]
+    #[Route(
+        '/{id}',
+        name: 'product_delete',
+        /** @infection-ignore-all */
+        methods: ['POST']
+    )]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . (int)$product->getId(), (string)$request->request->get('_token'))) {
