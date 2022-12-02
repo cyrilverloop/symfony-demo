@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <psalm
     autoloader="../vendor/autoload.php"
+    cacheDirectory="../var/cache/psalm/"
     errorLevel="1"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -14,4 +15,12 @@
             <directory name="../vendor/" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <referencedProperty name="Symfony\Bundle\FrameworkBundle\Controller\AbstractController::$container"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+    </issueHandlers>
 </psalm>
