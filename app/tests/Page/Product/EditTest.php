@@ -4,17 +4,30 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Product;
 
+use App\Controller\ProductController;
 use App\Entity\Product;
+use App\Form\ProductType;
+use App\Repository\ProductRepository;
 use App\Tests\Page\Product\GenerateString;
 use App\Tests\Page\Product\ProductFixture;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Test the product edit page.
- *
- * @coversDefaultClass \App\Controller\ProductController
  */
+#[
+    PA\CoversClass(ProductController::class),
+    PA\UsesClass(Product::class),
+    PA\UsesClass(ProductController::class),
+    PA\UsesClass(ProductRepository::class),
+    PA\UsesClass(ProductType::class),
+    PA\Group('pages'),
+    PA\Group('pages_product'),
+    PA\Group('pages_product_edit'),
+    PA\Group('product')
+]
 class EditTest extends WebTestCase
 {
     // Traits :
@@ -26,11 +39,6 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be edited.
-     *
-     * @covers ::edit
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
      */
     public function testCanDisplayProductEdit(): void
     {
@@ -82,14 +90,8 @@ class EditTest extends WebTestCase
     /**
      * Tests that the page can be browsed
      * back to the product index page.
-     *
-     * @covers ::edit
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayProductEdit
      */
+    #[PA\Depends('testCanDisplayProductEdit')]
     public function testCanBrowseBackToTheIndex(): void
     {
         $client = static::createClient();
@@ -105,14 +107,8 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be updated.
-     *
-     * @covers ::edit
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayProductEdit
      */
+    #[PA\Depends('testCanDisplayProductEdit')]
     public function testCanUpdateAProduct(): void
     {
         $client = static::createClient();
@@ -152,7 +148,7 @@ class EditTest extends WebTestCase
      * Returns invalid product datas.
      * @return mixed invalid product datas.
      */
-    public function getInvalidProductDatas(): array
+    public static function getInvalidProductDatas(): array
     {
         $productDatas = [
             'product[name]' => 'test-update-name',
@@ -163,15 +159,15 @@ class EditTest extends WebTestCase
         $emptyStringName['product[name]'] = '';
 
         $nameTooLong = $productDatas;
-        $nameTooLong['product[name]'] = $this->generateLongString(51);
+        $nameTooLong['product[name]'] = self::generateLongString(51);
 
         $descriptionTooLong = $productDatas;
-        $descriptionTooLong['product[description]'] = $this->generateLongString(301);
+        $descriptionTooLong['product[description]'] = self::generateLongString(301);
 
         return [
-            'when the name is an empty string.' => [$emptyStringName],
-            'when the name is too long (>50 chars).' => [$nameTooLong],
-            'when the description is too long (>300 chars).' => [$descriptionTooLong]
+            'the name is an empty string.' => [$emptyStringName],
+            'the name is too long (>50 chars).' => [$nameTooLong],
+            'the description is too long (>300 chars).' => [$descriptionTooLong]
         ];
     }
 
@@ -179,14 +175,12 @@ class EditTest extends WebTestCase
      * Tests that products can not be updated
      * with invalid product datas.
      * @param mixed[] $productDatas invalid product datas.
-     *
-     * @covers ::edit
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @dataProvider getInvalidProductDatas
-     * @depends testCanDisplayProductEdit
      */
+    #[
+        PA\DataProvider('getInvalidProductDatas'),
+        PA\Depends('testCanDisplayProductEdit'),
+        PA\TestDox('Can not update a product when $_dataName')
+    ]
     public function testCanNotUpdateAProduct(array $productDatas): void
     {
         $client = static::createClient();
@@ -221,13 +215,8 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product name can be unique.
-     *
-     * @covers ::edit
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayProductEdit
      */
+    #[PA\Depends('testCanDisplayProductEdit')]
     public function testAProductNameCanBeUnique(): void
     {
         $client = static::createClient();
@@ -260,15 +249,8 @@ class EditTest extends WebTestCase
 
     /**
      * Tests that a product can be deleted.
-     *
-     * @covers ::delete
-     * @covers ::edit
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayProductEdit
      */
+    #[PA\Depends('testCanDisplayProductEdit')]
     public function testCanDeleteProduct(): void
     {
         $client = static::createClient();

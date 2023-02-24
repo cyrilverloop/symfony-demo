@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Product;
+use PHPUnit\Framework\Attributes as PA;
 use PHPUnit\Framework\TestCase;
 
 /**
  * A class to test the Product entity.
- *
- * @coversDefaultClass \App\Entity\Product
- * @covers ::__construct
  */
+#[
+    PA\CoversClass(Product::class),
+    PA\Group('entitiies'),
+    PA\Group('entitiies_product'),
+    PA\Group('product')
+]
 class ProductTest extends TestCase
 {
     // Properties :
@@ -44,9 +48,6 @@ class ProductTest extends TestCase
 
     /**
      * Test that the name can be accessed.
-     *
-     * @covers ::getName
-     * @covers ::setName
      */
     public function testCanSetAndGetName(): void
     {
@@ -61,9 +62,6 @@ class ProductTest extends TestCase
 
     /**
      * Test that the description can be accessed.
-     *
-     * @covers ::getDescription
-     * @covers ::setDescription
      */
     public function testCanSetAndGetDescription(): void
     {

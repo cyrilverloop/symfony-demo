@@ -16,7 +16,7 @@ trait GenerateString
      * @param int $size the size of the string.
      * @return string a long string.
      */
-    public function generateLongString(int $size): string
+    public static function generateLongString(int $size): string
     {
         $string = '';
 

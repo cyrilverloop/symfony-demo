@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form;
 
 use App\Form\ProductType;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -15,9 +16,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Tests the product form.
- *
- * @coversDefaultClass \App\Form\ProductType
  */
+#[
+    PA\CoversClass(ProductType::class),
+    PA\Group('forms'),
+    PA\Group('forms_productType'),
+    PA\Group('product')
+]
 class ProductTypeTest extends TypeTestCase
 {
     // Properties :
@@ -41,8 +46,6 @@ class ProductTypeTest extends TypeTestCase
 
     /**
      * Test that the form can be built.
-     *
-     * @covers ::buildForm
      */
     public function testCanBuildForm(): void
     {
@@ -137,8 +140,6 @@ class ProductTypeTest extends TypeTestCase
 
     /**
      * Test that the options can be configured.
-     *
-     * @covers ::configureOptions
      */
     public function testCanUseEveryConfiguredOptions(): void
     {

@@ -4,18 +4,29 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Product;
 
+use App\Controller\ProductController;
 use App\Entity\Product;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use App\Tests\Page\Product\GenerateString;
 use App\Tests\Page\Product\ProductFixture;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Test the product index page.
- *
- * @coversDefaultClass \App\Controller\ProductController
  */
+#[
+    PA\CoversClass(ProductController::class),
+    PA\UsesClass(Product::class),
+    PA\UsesClass(ProductRepository::class),
+    PA\UsesClass(ProductType::class),
+    PA\Group('pages'),
+    PA\Group('pages_product'),
+    PA\Group('pages_product_new'),
+    PA\Group('product')
+]
 class NewTest extends WebTestCase
 {
     // Traits :
@@ -28,10 +39,6 @@ class NewTest extends WebTestCase
     /**
      * Tests that the page to create a new product
      * can be displayed.
-     *
-     * @covers ::new
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
      */
     public function testCanDisplayNewProductPage(): void
     {
@@ -79,14 +86,8 @@ class NewTest extends WebTestCase
 
     /**
      * Tests that new products can be created.
-     *
-     * @covers ::new
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayNewProductPage
      */
+    #[PA\Depends('testCanDisplayNewProductPage')]
     public function testCanCreateNewProduct(): void
     {
         $client = static::createClient();
@@ -125,7 +126,7 @@ class NewTest extends WebTestCase
      * Returns invalid product datas.
      * @return mixed invalid product datas.
      */
-    public function getInvalidProductDatas(): array
+    public static function getInvalidProductDatas(): array
     {
         $productDatas = [
             'product[name]' => 'test-new-name',
@@ -136,15 +137,15 @@ class NewTest extends WebTestCase
         $emptyStringName['product[name]'] = '';
 
         $nameTooLong = $productDatas;
-        $nameTooLong['product[name]'] = $this->generateLongString(51);
+        $nameTooLong['product[name]'] = self::generateLongString(51);
 
         $descriptionTooLong = $productDatas;
-        $descriptionTooLong['product[name]'] = $this->generateLongString(301);
+        $descriptionTooLong['product[name]'] = self::generateLongString(301);
 
         return [
-            'when the name is an empty string.' => [$emptyStringName],
-            'when the name is too long (>50 chars).' => [$nameTooLong],
-            'when the description is too long (>300 chars).' => [$descriptionTooLong]
+            'the name is an empty string.' => [$emptyStringName],
+            'the name is too long (>50 chars).' => [$nameTooLong],
+            'the description is too long (>300 chars).' => [$descriptionTooLong]
         ];
     }
 
@@ -152,15 +153,12 @@ class NewTest extends WebTestCase
      * Tests that new products can not be created
      * with invalid product datas.
      * @param mixed[] $productDatas invalid product datas.
-     *
-     * @covers ::new
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @dataProvider getInvalidProductDatas
-     * @depends testCanDisplayNewProductPage
      */
+    #[
+        PA\DataProvider('getInvalidProductDatas'),
+        PA\Depends('testCanDisplayNewProductPage'),
+        PA\TestDox('Can not create new product when $_dataName')
+    ]
     public function testCanNotCreateNewProduct(array $productDatas): void
     {
         $client = static::createClient();
@@ -186,14 +184,8 @@ class NewTest extends WebTestCase
 
     /**
      * Tests that a product name can be unique.
-     *
-     * @covers ::new
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanDisplayNewProductPage
      */
+    #[PA\Depends('testCanDisplayNewProductPage')]
     public function testAProductNameCanBeUnique(): void
     {
         $client = static::createClient();

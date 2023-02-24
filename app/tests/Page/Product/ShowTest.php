@@ -4,15 +4,27 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Product;
 
+use App\Controller\ProductController;
 use App\Entity\Product;
+use App\Form\ProductType;
+use App\Repository\ProductRepository;
 use App\Tests\Page\Product\ProductFixture;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * Test the product show page.
- *
- * @coversDefaultClass \App\Controller\ProductController
  */
+#[
+    PA\CoversClass(ProductController::class),
+    PA\UsesClass(Product::class),
+    PA\UsesClass(ProductRepository::class),
+    PA\UsesClass(ProductType::class),
+    PA\Group('pages'),
+    PA\Group('pages_product'),
+    PA\Group('pages_product_show'),
+    PA\Group('product')
+]
 class ShowTest extends WebTestCase
 {
     // Traits :
@@ -23,10 +35,6 @@ class ShowTest extends WebTestCase
 
     /**
      * Tests that product can be shown.
-     *
-     * @covers ::show
-     * @uses \App\Entity\Product
-     * @uses \App\Repository\ProductRepository::__construct
      */
     public function testCanShowProduct(): void
     {
@@ -84,14 +92,8 @@ class ShowTest extends WebTestCase
     /**
      * Tests that the page can be browsed
      * back to the product index page.
-     *
-     * @covers ::show
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanShowProduct
      */
+    #[PA\Depends('testCanShowProduct')]
     public function testCanBrowseBackToTheIndex(): void
     {
         $client = static::createClient();
@@ -110,14 +112,8 @@ class ShowTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the show to the edit page.
-     *
-     * @covers ::show
-     * @uses \App\Controller\ProductController::edit
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanShowProduct
      */
+    #[PA\Depends('testCanShowProduct')]
     public function testCanBrowseFromShowToEdit(): void
     {
         $client = static::createClient();
@@ -135,15 +131,8 @@ class ShowTest extends WebTestCase
 
     /**
      * Tests that a product can be deleted.
-     *
-     * @covers ::delete
-     * @covers ::show
-     * @uses \App\Controller\ProductController::index
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
-     * @depends testCanShowProduct
      */
+    #[PA\Depends('testCanShowProduct')]
     public function testCanDeleteProduct(): void
     {
         $client = static::createClient();

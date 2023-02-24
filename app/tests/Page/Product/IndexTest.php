@@ -4,15 +4,28 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Product;
 
+use App\Controller\ProductController;
+use App\Entity\Product;
+use App\Form\ProductType;
+use App\Repository\ProductRepository;
 use App\Tests\Page\Product\ProductFixture;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * Test the product index page.
- *
- * @coversDefaultClass \App\Controller\ProductController
  */
+#[
+    PA\CoversClass(ProductController::class),
+    PA\CoversClass(ProductRepository::class),
+    PA\UsesClass(Product::class),
+    PA\UsesClass(ProductType::class),
+    PA\Group('pages'),
+    PA\Group('pages_product'),
+    PA\Group('pages_product_index'),
+    PA\Group('product')
+]
 class IndexTest extends WebTestCase
 {
     // Traits :
@@ -23,9 +36,6 @@ class IndexTest extends WebTestCase
 
     /**
      * Tests that product index can be displayed without record.
-     *
-     * @covers ::index
-     * @uses \App\Repository\ProductRepository::__construct
      */
     public function testCanShowProductIndexWhenThereIsNoRecord(): void
     {
@@ -61,10 +71,6 @@ class IndexTest extends WebTestCase
 
     /**
      * Tests that product index can be displayed with records.
-     *
-     * @covers ::index
-     * @uses \App\Entity\Product
-     * @uses \App\Repository\ProductRepository::__construct
      */
     public function testCanShowProductIndexWhenThereAreRecords(): void
     {
@@ -93,12 +99,6 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "new" page.
-     *
-     * @covers ::index
-     * @uses \App\Controller\ProductController::new
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository
      */
     public function testCanBrowseFromIndexToCreateNew(): void
     {
@@ -117,13 +117,8 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "show" page.
-     *
-     * @covers ::index
-     * @uses \App\Controller\ProductController::show
-     * @uses \App\Entity\Product
-     * @uses \App\Repository\ProductRepository::__construct
-     * @depends testCanShowProductIndexWhenThereAreRecords
      */
+    #[PA\Depends('testCanShowProductIndexWhenThereAreRecords')]
     public function testCanBrowseFromIndexToShow(): void
     {
         $client = static::createClient();
@@ -149,14 +144,8 @@ class IndexTest extends WebTestCase
     /**
      * Tests that the page can browsed
      * from the index to the "show" page.
-     *
-     * @covers ::index
-     * @uses \App\Controller\ProductController::edit
-     * @uses \App\Entity\Product
-     * @uses \App\Form\ProductType
-     * @uses \App\Repository\ProductRepository::__construct
-     * @depends testCanShowProductIndexWhenThereAreRecords
      */
+    #[PA\Depends('testCanShowProductIndexWhenThereAreRecords')]
     public function testCanBrowseFromIndexToEdit(): void
     {
         $client = static::createClient();

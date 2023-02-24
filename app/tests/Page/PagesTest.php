@@ -4,21 +4,28 @@ declare(strict_types=1);
 
 namespace App\Tests\Page;
 
+use App\Controller\PagesController;
+use App\Controller\ProductController;
+use App\Repository\ProductRepository;
+use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * Test the home page.
- *
- * @coversDefaultClass \App\Controller\PagesController
  */
+#[
+    PA\CoversClass(PagesController::class),
+    PA\UsesClass(ProductController::class),
+    PA\UsesClass(ProductRepository::class),
+    PA\Group('pages'),
+    PA\Group('pages_home')
+]
 class PagesTest extends WebTestCase
 {
     // Methods :
 
     /**
      * Test that the homepage can be displayed.
-     *
-     * @covers ::home
      */
     public function testCanShowHome(): void
     {
@@ -32,12 +39,10 @@ class PagesTest extends WebTestCase
 
     /**
      * Test that a user can browse to the product list.
-     *
-     * @covers ::home
-     * @covers \App\Repository\ProductRepository::__construct
-     * @uses \App\Controller\ProductController::index
-     * @depends testCanShowHome
      */
+    #[
+        PA\Depends('testCanShowHome')
+    ]
     public function testCanBrowseToProductIndex(): void
     {
         $client = static::createClient();
