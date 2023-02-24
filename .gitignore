@@ -3,6 +3,7 @@
 /app/ci/phpdoc/
 /app/ci/phpunit/
 /app/ci/psalm/
+/app/migrations-test/*.php
 /app/node_modules/
 /app/public/build/
 /app/tools/
