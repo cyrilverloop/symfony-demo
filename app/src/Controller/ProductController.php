@@ -119,6 +119,7 @@ class ProductController extends AbstractController
      * Deletes a product.
      * @param \Symfony\Component\HttpFoundation\Request $request the request.
      * @param \App\Entity\Product $product the product.
+     * @param \Doctrine\ORM\EntityManagerInterface $entityManager the entity manager.
      * @return \Symfony\Component\HttpFoundation\Response the response.
      */
     #[Route(
