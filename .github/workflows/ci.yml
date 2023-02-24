@@ -10,6 +10,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v3
@@ -19,7 +24,7 @@ jobs:
 
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: cd app/ && echo 'DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"' > .env.local && composer install --prefer-dist --no-progress --no-suggest
+      run: cd app/ && composer install --prefer-dist --no-progress --no-suggest
 
     - name: Cache phive packages
       id: phive-tools-cache
@@ -52,6 +57,11 @@ jobs:
     - name: Untar project.
       run:  tar -xf project.tar
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
     - name: Run php lint
       run: cd app/ && find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
 
@@ -66,6 +76,11 @@ jobs:
 
     - name: Untar project.
       run:  tar -xf project.tar
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
 
     - name: Run phpcs
       run: cd app/ && ./tools/phpcs --standard=PSR12 --extensions=php --ignore=*/Kernel.php ./src/
@@ -103,8 +118,13 @@ jobs:
     - name: Install assets
       run: cd app/ && npm run dev
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
     - name: Run PHPUnit test
-      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
+      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console make:migration -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
 
   static-analysis:
     needs: phplint
@@ -117,6 +137,11 @@ jobs:
 
     - name: Untar project.
       run:  tar -xf project.tar
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
 
     - name: Run Psalm
       run: cd app/ci/ && ../tools/psalm --shepherd --no-cache
