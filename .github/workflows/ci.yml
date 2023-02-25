@@ -24,7 +24,7 @@ jobs:
 
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: cd app/ && composer install --prefer-dist --no-progress --no-suggest
+      run: cd app/ && echo 'APP_ENV=test' > .env.local && composer install --prefer-dist --no-progress --no-suggest
 
     - name: Cache phive packages
       id: phive-tools-cache
