@@ -8,4 +8,4 @@ doctrine_migrations:
 when@test:
     doctrine_migrations:
         migrations_paths:
-            'DoctrineMigrations': '%kernel.project_dir%/migrations-tests'
+            'DoctrineMigrations': '%kernel.project_dir%/migrations-test'
