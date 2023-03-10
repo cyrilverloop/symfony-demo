@@ -31,7 +31,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: app/tools
-        key: phive-tools-${{ hashFiles('**/phive.xml') }}
+        key: phive-tools-${{ hashFiles('**/.phive/phars.xml') }}
 
     - name: Install phive tools
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
