@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd"
     bootstrap="../tests/bootstrap.php"
     cacheDirectory="../var/cache/.phpunit.cache"
     colors="true"
@@ -16,19 +16,8 @@
     failOnSkipped="true"
     failOnWarning="true"
     testdox="true"
-    >
-
-    <coverage
-        includeUncoveredFiles="true"
-        >
-        <exclude>
-            <file>../src/Kernel.php</file>
-        </exclude>
-
-        <include>
-            <directory suffix=".php">../src</directory>
-        </include>
-
+>
+    <coverage includeUncoveredFiles="true">
         <report>
             <html outputDirectory="phpunit/html" />
         </report>
@@ -45,6 +34,16 @@
     <php>
         <env name="APP_ENV" value="test" force="true" />
     </php>
+
+    <source>
+        <include>
+            <directory suffix=".php">../src</directory>
+        </include>
+
+        <exclude>
+            <file>../src/Kernel.php</file>
+        </exclude>
+    </source>
 
     <testsuites>
         <testsuite name="default">
