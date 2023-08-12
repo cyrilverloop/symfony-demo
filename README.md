@@ -32,6 +32,7 @@ user@host symfony-demo$ docker compose build
 ```
 
 ### Installing PHP dependencies
+
 Define the database configuration for Symfony (see `./app/.env` or `./app/.env.local.dist`)
 and install the PHP dependencies :
 ```shellsession
@@ -45,7 +46,6 @@ user@host symfony-demo$ docker compose run --rm app phive install --trust-gpg-ke
 ```
 
 ### Creating the database
-
 
 ```shellsession
 user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:database:create [-e test]
