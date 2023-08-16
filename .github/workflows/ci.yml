@@ -35,7 +35,7 @@ jobs:
 
     - name: Install phive tools
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: cd app/ && wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,67F861C3D889C656,C5095986493B4AA0 && chmod -R +x ./tools/
+      run: cd app/ && wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0 && chmod -R +x ./tools/
 
     - name: 'Tar project'
       run: tar -cf project.tar .
