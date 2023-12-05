@@ -1,6 +1,6 @@
 # symfony-demo
 
-This is a simple Symfony 6.4 demo project using PHP 8.2 and NodeJs 21.
+This is a simple Symfony 7.0 demo project using PHP 8.3 and NodeJs 21.
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
