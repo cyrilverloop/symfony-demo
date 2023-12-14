@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78d1fb8461f68e7dfc59774feb536aeb",
+    "content-hash": "fdf915e7693ba1a484ea6849865dd9cc",
     "packages": [
         {
             "name": "cyril-verloop/doctrine-entities",
@@ -49,20 +49,21 @@
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
-            "version": "2.0.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/symfony-twig-templates.git",
-                "reference": "cefdf35fc24f959b570da88be4f7c9b8690274ec"
+                "reference": "0cc52afb9d956490c33d512ab018274eed424a8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/symfony-twig-templates/zipball/cefdf35fc24f959b570da88be4f7c9b8690274ec",
-                "reference": "cefdf35fc24f959b570da88be4f7c9b8690274ec",
+                "url": "https://api.github.com/repos/cyrilverloop/symfony-twig-templates/zipball/0cc52afb9d956490c33d512ab018274eed424a8f",
+                "reference": "0cc52afb9d956490c33d512ab018274eed424a8f",
                 "shasum": ""
             },
             "require": {
-                "symfony/asset": "^7.0"
+                "symfony/asset": "^7.0",
+                "twig/twig": "^3"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -78,7 +79,7 @@
             "description": "A base Twig template for Symfony.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/symfony-twig-templates/issues",
-                "source": "https://github.com/cyrilverloop/symfony-twig-templates/tree/2.0.0"
+                "source": "https://github.com/cyrilverloop/symfony-twig-templates/tree/2.1.1"
             },
             "funding": [
                 {
@@ -86,7 +87,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-05T14:59:11+00:00"
+            "time": "2023-12-11T15:55:23+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -8061,16 +8062,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.17.1",
+            "version": "v4.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d"
+                "reference": "1bcbb2179f97633e98bbbc87044ee2611c7d7999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d",
-                "reference": "a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bcbb2179f97633e98bbbc87044ee2611c7d7999",
+                "reference": "1bcbb2179f97633e98bbbc87044ee2611c7d7999",
                 "shasum": ""
             },
             "require": {
@@ -8111,9 +8112,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.17.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.18.0"
             },
-            "time": "2023-08-13T19:53:39+00:00"
+            "time": "2023-12-10T21:03:43+00:00"
         },
         {
             "name": "phar-io/manifest",
