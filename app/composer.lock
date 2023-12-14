@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdf915e7693ba1a484ea6849865dd9cc",
+    "content-hash": "46d8940aaa85e5cf0986939a6e8bb75a",
     "packages": [
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "6.0.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "6b5e0eb9e9a0b39d615965451744cbbb5293e368"
+                "reference": "141f6c704624e75ff75ecf8435351627b8bcf8e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/6b5e0eb9e9a0b39d615965451744cbbb5293e368",
-                "reference": "6b5e0eb9e9a0b39d615965451744cbbb5293e368",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/141f6c704624e75ff75ecf8435351627b8bcf8e9",
+                "reference": "141f6c704624e75ff75ecf8435351627b8bcf8e9",
                 "shasum": ""
             },
             "require": {
-                "doctrine/orm": "^2.13",
-                "php": ">=8.1"
+                "doctrine/orm": "^2.17",
+                "php": ">=8.2"
             },
             "type": "library",
             "autoload": {
@@ -40,12 +40,18 @@
                     "email": "cyril.verloop@webqard.fr"
                 }
             ],
-            "description": "Some default doctrine entity/fields requiring PHP 8.1+ and Doctrine 2.13+.",
+            "description": "Some default doctrine entity/fields requiring PHP >=8.2 and Doctrine ORM 2.17.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/6.0.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/7.0.0"
             },
-            "time": "2022-10-05T11:39:44+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/cyrilverloop",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-12-14T13:42:36+00:00"
         },
         {
             "name": "cyril-verloop/symfony-twig-templates",
