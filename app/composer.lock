@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46d8940aaa85e5cf0986939a6e8bb75a",
+    "content-hash": "07c6a163a7b5f6085759202a9030ba94",
     "packages": [
         {
             "name": "cyril-verloop/doctrine-entities",
@@ -10204,7 +10204,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.2",
+        "php": ">=8.3",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
