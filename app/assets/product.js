@@ -1,6 +1,6 @@
 import './styles/product.scss';
 
-let formNode = document.getElementById('delete_product_form');
+const formNode = document.getElementById('delete_product_form');
 
 formNode.addEventListener('submit', confirmDelete);
 
@@ -9,9 +9,9 @@ formNode.addEventListener('submit', confirmDelete);
  * @param {Event} event - the event.
  */
 function confirmDelete(event) {
-    let toBeDeleted = confirm(this.dataset.deleteMessage);
+    const toBeDeleted = confirm(this.dataset.deleteMessage);
 
-    if(toBeDeleted===false) {
+    if(toBeDeleted === false) {
         event.preventDefault();
     }
 }
