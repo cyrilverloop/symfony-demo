@@ -1,7 +1,5 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-    paths:
-        '%kernel.project_dir%/vendor/cyril-verloop/symfony-twig-templates/templates': CVSymfonyTwigTemplates
     form_themes:
         - bootstrap_5_layout.html.twig
     globals:

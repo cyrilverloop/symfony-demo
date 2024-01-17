@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07c6a163a7b5f6085759202a9030ba94",
+    "content-hash": "71a39f78fa74b3dd67d41b25e6c39dc8",
     "packages": [
         {
             "name": "cyril-verloop/doctrine-entities",
@@ -54,24 +54,29 @@
             "time": "2023-12-14T13:42:36+00:00"
         },
         {
-            "name": "cyril-verloop/symfony-twig-templates",
-            "version": "2.1.1",
+            "name": "cyril-verloop/templates-bundle",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cyrilverloop/symfony-twig-templates.git",
-                "reference": "0cc52afb9d956490c33d512ab018274eed424a8f"
+                "url": "https://github.com/cyrilverloop/templates-bundle.git",
+                "reference": "5807b1376ba2aa38c0e16411afcd47892eb27500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/symfony-twig-templates/zipball/0cc52afb9d956490c33d512ab018274eed424a8f",
-                "reference": "0cc52afb9d956490c33d512ab018274eed424a8f",
+                "url": "https://api.github.com/repos/cyrilverloop/templates-bundle/zipball/5807b1376ba2aa38c0e16411afcd47892eb27500",
+                "reference": "5807b1376ba2aa38c0e16411afcd47892eb27500",
                 "shasum": ""
             },
             "require": {
                 "symfony/asset": "^7.0",
                 "twig/twig": "^3"
             },
-            "type": "library",
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "CyrilVerloop\\Bundle\\TemplatesBundle\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -82,10 +87,10 @@
                     "email": "cyril.verloop@webqard.fr"
                 }
             ],
-            "description": "A base Twig template for Symfony.",
+            "description": "Some basic templates for Symfony 7+.",
             "support": {
-                "issues": "https://github.com/cyrilverloop/symfony-twig-templates/issues",
-                "source": "https://github.com/cyrilverloop/symfony-twig-templates/tree/2.1.1"
+                "issues": "https://github.com/cyrilverloop/templates-bundle/issues",
+                "source": "https://github.com/cyrilverloop/templates-bundle/tree/1.0.0"
             },
             "funding": [
                 {
@@ -93,7 +98,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-11T15:55:23+00:00"
+            "time": "2024-01-16T18:00:33+00:00"
         },
         {
             "name": "doctrine/annotations",
