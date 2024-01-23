@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
  */
 #[
     PA\CoversClass(Product::class),
-    PA\Group('entitiies'),
-    PA\Group('entitiies_product'),
+    PA\Group('entities'),
+    PA\Group('entities_product'),
     PA\Group('product')
 ]
 class ProductTest extends TestCase
