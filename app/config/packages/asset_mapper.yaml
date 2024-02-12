@@ -1,0 +1,7 @@
+framework:
+    asset_mapper:
+        # To disable the shim :
+        importmap_polyfill: false
+        # The paths to make available to the asset mapper.
+        paths:
+            - assets/

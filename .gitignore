@@ -1,3 +1,4 @@
+/app/assets/vendor/
 /app/ci/infection/
 /app/ci/logs/
 /app/ci/phpdoc/
@@ -5,7 +6,7 @@
 /app/ci/psalm/
 /app/migrations-test/*.php
 /app/node_modules/
-/app/public/build/
+/app/public/assets/
 /app/tools/
 /app/var/
 /app/vendor/

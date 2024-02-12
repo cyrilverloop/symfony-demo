@@ -1,22 +1,18 @@
 {% extends "@CVTemplatesBundle/layout.html.twig" %}
 
 
-{% set viewport='width=device-width, initial-scale=1' %}
+{% set viewport = 'width=device-width, initial-scale=1' %}
 
 {% block favicon %}{% endblock %}
 
 
 {# SEO #}
 
-{% set metaDescription=false %}
+{% set metaDescription = false %}
 
 
 {# Assets #}
 
-{% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
+{% block importmap %}
+    {{ importmap('app') }}
 {% endblock %}

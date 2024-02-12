@@ -1,8 +1,7 @@
-import './styles/product.scss';
-
 const formNode = document.getElementById('delete_product_form');
 
-formNode.addEventListener('submit', confirmDelete);
+formNode
+    .addEventListener('submit', confirmDelete);
 
 /**
  * Ask for confirmation before deleting a product.

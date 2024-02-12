@@ -3,21 +3,13 @@
 
 {# SEO #}
 
-{% set pageHeadTitle='Edit Product' %}
+{% set pageHeadTitle = 'Edit Product' %}
 
 
 {# Assets #}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    {{ encore_entry_link_tags('product') }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-
-    {{ encore_entry_script_tags('product') }}
+{% block importmap %}
+    {{ importmap(['app', 'product-delete', 'product-edit']) }}
 {% endblock %}
 
 

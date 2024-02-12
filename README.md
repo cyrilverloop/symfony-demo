@@ -1,10 +1,12 @@
 # symfony-demo
 
-This is a simple Symfony 7.0 demo project using PHP 8.3 and NodeJs 21.
+This is a simple Symfony 7.0 demo project using PHP 8.3.
+
+**This demo is using AssetMapper. To see a version with Encore, switch to the unmaintained `webpack-encore` branch.**
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
-[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.2-%23777BB4?logo=php&style=flat)](https://www.php.net/)
+[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.3-%23777BB4?logo=php&style=flat)](https://www.php.net/)
 
 
 ## Installation
@@ -17,11 +19,10 @@ user@host projects$ git clone https://github.com/cyrilverloop/symfony-demo.git
 user@host projects$ cd symfony-demo
 ```
 
-This demo uses 4 Docker images based on :
+This demo uses 3 Docker images based on :
 1. `mariadb` to run the database;
 2. `php:apache` to run the web server;
 3. `composer` to install PHP dependencies;
-4. `node:alpine` to install node dependencies.
 
 ### Building the image
 
@@ -54,12 +55,10 @@ user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:migra
 The "-e test" option is to for the test environment which uses Sqlite.
 
 
-### Building assets
+### Serving assets in production
 
-Install node dependencies and build the assets :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm node npm i
-user@host symfony-demo$ docker compose run --rm node npm run build
+user@host symfony-demo$ docker compose run --rm app bin/console asset-map:compile
 ```
 
 ## Usage

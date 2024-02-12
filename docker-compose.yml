@@ -16,11 +16,3 @@ services:
         volumes:
             - ./app/:/var/www/html/
         working_dir: /var/www/html/
-
-    node:
-        image: node:alpine
-        profiles:
-            - node
-        volumes:
-            - ./app/:/var/www/
-        working_dir: /var/www/

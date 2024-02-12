@@ -3,15 +3,13 @@
 
 {# SEO #}
 
-{% set pageHeadTitle='New Product' %}
+{% set pageHeadTitle = 'New Product' %}
 
 
 {# Assets #}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    {{ encore_entry_link_tags('product') }}
+{% block importmap %}
+    {{ importmap(['app', 'product-edit']) }}
 {% endblock %}
 
 

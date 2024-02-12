@@ -3,15 +3,13 @@
 
 {# SEO #}
 
-{% set pageHeadTitle='Product' %}
+{% set pageHeadTitle = 'Product' %}
 
 
 {# Assets #}
 
-{% block javascripts %}
-    {{ parent() }}
-
-    {{ encore_entry_script_tags('product') }}
+{% block importmap %}
+    {{ importmap(['app', 'product-delete']) }}
 {% endblock %}
 
 
