@@ -89,20 +89,20 @@
         },
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "7.0.0",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "141f6c704624e75ff75ecf8435351627b8bcf8e9"
+                "reference": "37606d4ef2fbfed03a07fa66353826f7f232976f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/141f6c704624e75ff75ecf8435351627b8bcf8e9",
-                "reference": "141f6c704624e75ff75ecf8435351627b8bcf8e9",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/37606d4ef2fbfed03a07fa66353826f7f232976f",
+                "reference": "37606d4ef2fbfed03a07fa66353826f7f232976f",
                 "shasum": ""
             },
             "require": {
-                "doctrine/orm": "^2.17",
+                "doctrine/orm": "^2.17 || ^3.0",
                 "php": ">=8.2"
             },
             "type": "library",
@@ -124,7 +124,7 @@
             "description": "Some default doctrine entity/fields requiring PHP >=8.2 and Doctrine ORM 2.17.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/7.0.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/7.1.0"
             },
             "funding": [
                 {
@@ -132,7 +132,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-14T13:42:36+00:00"
+            "time": "2024-02-13T15:33:56+00:00"
         },
         {
             "name": "cyril-verloop/templates-bundle",
@@ -689,16 +689,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.11.2",
+            "version": "2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "fb22c9320383caa2829c32dc3b84c1b5e0f1ceaf"
+                "reference": "492725310ae9a1b5b20d6ae09fb5ae6404616e68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/fb22c9320383caa2829c32dc3b84c1b5e0f1ceaf",
-                "reference": "fb22c9320383caa2829c32dc3b84c1b5e0f1ceaf",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/492725310ae9a1b5b20d6ae09fb5ae6404616e68",
+                "reference": "492725310ae9a1b5b20d6ae09fb5ae6404616e68",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +788,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.11.2"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.11.3"
             },
             "funding": [
                 {
@@ -804,7 +804,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-06T15:41:25+00:00"
+            "time": "2024-02-10T20:56:20+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
