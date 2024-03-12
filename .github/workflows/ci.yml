@@ -26,6 +26,9 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: cd app/ && echo 'APP_ENV=test' > .env.local && composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Install assets
+      run: cd app/ && echo 'DATABASE_URL=sqlite:///%kernel.project_dir%/var/app.db' >> .env.local && ./bin/console importmap:install
+
     - name: Cache phive packages
       id: phive-tools-cache
       uses: actions/cache@v4
