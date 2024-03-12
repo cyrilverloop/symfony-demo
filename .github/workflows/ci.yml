@@ -103,21 +103,6 @@ jobs:
         php-version: '8.3'
         coverage: xdebug
 
-    - name: Cache npm packages
-      id: npm-cache
-      uses: actions/cache@v4
-      with:
-        path: app/node_modules
-        key: npm-${{ hashFiles('**/package-lock.json') }}
-
-    - uses: actions/setup-node@v3
-    - name: Install npm package
-      if: steps.npm-cache.outputs.cache-hit != 'true'
-      run: cd app/ && npm i
-
-    - name: Install assets
-      run: cd app/ && npm run dev
-
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
