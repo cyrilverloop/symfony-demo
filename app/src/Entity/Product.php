@@ -15,8 +15,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[UniqueEntity(fields: 'name', message: 'product.name.uniqueEntity')]
-class Product extends IntId
+class Product
 {
+    // Traits :
+    use IntId;
+
+
     // Properties :
 
     /**
@@ -50,8 +54,7 @@ class Product extends IntId
      */
     public function __construct(string $name = '', ?string $description = null)
     {
-        parent::__construct();
-
+        $this->id = null;
         $this->name = $name;
         $this->description = $description;
     }
