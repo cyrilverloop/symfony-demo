@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "composer/semver",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "8536c1b9103405bcbd310c69e7a5739a1c2b1f0b"
+                "reference": "c51258e759afdb17f1fd1fe83bc12baaef6309d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/8536c1b9103405bcbd310c69e7a5739a1c2b1f0b",
-                "reference": "8536c1b9103405bcbd310c69e7a5739a1c2b1f0b",
+                "url": "https://api.github.com/repos/composer/semver/zipball/c51258e759afdb17f1fd1fe83bc12baaef6309d6",
+                "reference": "c51258e759afdb17f1fd1fe83bc12baaef6309d6",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.4.1"
+                "source": "https://github.com/composer/semver/tree/3.4.2"
             },
             "funding": [
                 {
@@ -85,20 +85,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-12T09:13:09+00:00"
+            "time": "2024-07-12T11:35:52+00:00"
         },
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "8.1.0",
+            "version": "8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "8fbea504caef857e13157c643f89c172479fa3bf"
+                "reference": "32d2bd84a72baf9990b86a2c6fbe4825fbb449f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/8fbea504caef857e13157c643f89c172479fa3bf",
-                "reference": "8fbea504caef857e13157c643f89c172479fa3bf",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/32d2bd84a72baf9990b86a2c6fbe4825fbb449f8",
+                "reference": "32d2bd84a72baf9990b86a2c6fbe4825fbb449f8",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
             "description": "Some default doctrine entity/fields requiring PHP >=8.2 and Doctrine ORM 3.2.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/8.1.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/8.2.0"
             },
             "funding": [
                 {
@@ -132,7 +132,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-19T19:12:36+00:00"
+            "time": "2024-07-17T14:23:40+00:00"
         },
         {
             "name": "cyril-verloop/templates-bundle",
