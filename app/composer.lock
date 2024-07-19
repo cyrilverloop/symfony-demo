@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c7fa685d61dce95c506029451f1c5a2",
+    "content-hash": "c92821be8d1aea5f9c17e6844737ffe0",
     "packages": [
         {
             "name": "composer/semver",
@@ -89,16 +89,16 @@
         },
         {
             "name": "cyril-verloop/doctrine-entities",
-            "version": "8.2.0",
+            "version": "9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "32d2bd84a72baf9990b86a2c6fbe4825fbb449f8"
+                "reference": "e7c9548d1f977aabfa6309a7d2b309cf51259279"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/32d2bd84a72baf9990b86a2c6fbe4825fbb449f8",
-                "reference": "32d2bd84a72baf9990b86a2c6fbe4825fbb449f8",
+                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/e7c9548d1f977aabfa6309a7d2b309cf51259279",
+                "reference": "e7c9548d1f977aabfa6309a7d2b309cf51259279",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +124,7 @@
             "description": "Some default doctrine entity/fields requiring PHP >=8.2 and Doctrine ORM 3.2.",
             "support": {
                 "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/8.2.0"
+                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/9.0.0"
             },
             "funding": [
                 {
@@ -132,7 +132,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-17T14:23:40+00:00"
+            "time": "2024-07-19T20:33:25+00:00"
         },
         {
             "name": "cyril-verloop/templates-bundle",

@@ -7,7 +7,7 @@
         "php": ">=8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "cyril-verloop/doctrine-entities": "^8.0",
+        "cyril-verloop/doctrine-entities": "^9.0",
         "cyril-verloop/templates-bundle": "^1.0",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.12",
