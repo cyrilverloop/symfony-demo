@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.4/phpunit.xsd"
     bootstrap="../tests/bootstrap.php"
     cacheDirectory="../var/cache/.phpunit.cache"
     colors="true"
@@ -11,13 +11,18 @@
     beStrictAboutCoverageMetadata="true"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    failOnDeprecation="true"
+    failOnEmptyTestSuite="true"
     failOnIncomplete="true"
+    failOnNotice="true"
+    failOnPhpunitDeprecation="true"
     failOnRisky="true"
     failOnSkipped="true"
     failOnWarning="true"
     testdox="true"
 >
-    <coverage includeUncoveredFiles="true">
+    <coverage>
         <report>
             <html outputDirectory="phpunit/html" />
         </report>
@@ -35,7 +40,11 @@
         <env name="APP_ENV" value="test" force="true" />
     </php>
 
-    <source>
+    <source
+        ignoreIndirectDeprecations="true"
+        restrictNotices="true"
+        restrictWarnings="true"
+    >
         <include>
             <directory suffix=".php">../src</directory>
         </include>
