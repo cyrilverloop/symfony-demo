@@ -1,12 +1,12 @@
 # symfony-demo
 
-This is a simple Symfony 7.1 demo project using PHP 8.3.
+This is a simple Symfony 7.2 demo project using PHP 8.4.
 
 **This demo is using AssetMapper. To see a version with Encore, switch to the unmaintained `webpack-encore` branch.**
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
-[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.3-%23777BB4?logo=php&style=flat)](https://www.php.net/)
+[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.4-%23777BB4?logo=php&style=flat)](https://www.php.net/)
 
 
 ## Installation
