@@ -13,7 +13,7 @@
         "doctrine/doctrine-bundle": "^2.13.1",
         "doctrine/doctrine-migrations-bundle": "^3.3.1",
         "doctrine/orm": "^3.3",
-        "phpdocumentor/reflection-docblock": "^5.6",
+        "phpdocumentor/reflection-docblock": "^5.6.1",
         "phpstan/phpdoc-parser": "^2.0",
         "symfony/asset": "7.2.*",
         "symfony/asset-mapper": "7.2.*",
@@ -42,8 +42,8 @@
         "symfony/validator": "7.2.*",
         "symfony/web-link": "7.2.*",
         "symfony/yaml": "7.2.*",
-        "twig/extra-bundle": "^3.16",
-        "twig/twig": "^3.16"
+        "twig/extra-bundle": "^3.17",
+        "twig/twig": "^3.17.1"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.2",
