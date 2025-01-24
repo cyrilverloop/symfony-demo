@@ -9,7 +9,7 @@
         "ext-iconv": "*",
         "cyril-verloop/doctrine-entities": "^9.0",
         "cyril-verloop/templates-bundle": "^1.0",
-        "doctrine/dbal": "^3.9.4",
+        "doctrine/dbal": "^4.2",
         "doctrine/doctrine-bundle": "^2.13.2",
         "doctrine/doctrine-migrations-bundle": "^3.4.0",
         "doctrine/orm": "^3.3.1",
