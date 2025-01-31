@@ -9,9 +9,9 @@
         "ext-iconv": "*",
         "cyril-verloop/doctrine-entities": "^9.0",
         "cyril-verloop/templates-bundle": "^1.0",
-        "doctrine/dbal": "^4.2",
+        "doctrine/dbal": "^4.2.2",
         "doctrine/doctrine-bundle": "^2.13.2",
-        "doctrine/doctrine-migrations-bundle": "^3.4.0",
+        "doctrine/doctrine-migrations-bundle": "^3.4.1",
         "doctrine/orm": "^3.3.1",
         "phpdocumentor/reflection-docblock": "^5.6.1",
         "phpstan/phpdoc-parser": "^2.0",
@@ -42,8 +42,8 @@
         "symfony/validator": "7.2.*",
         "symfony/web-link": "7.2.*",
         "symfony/yaml": "7.2.*",
-        "twig/extra-bundle": "^3.18",
-        "twig/twig": "^3.18.0"
+        "twig/extra-bundle": "^3.19",
+        "twig/twig": "^3.19.0"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.2",
