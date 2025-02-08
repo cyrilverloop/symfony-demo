@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * The controller for the home page.
+ *
+ * @psalm-api
  */
 class PagesController extends AbstractController
 {

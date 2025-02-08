@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * The controller for the product CRUD.
+ *
+ * @psalm-api
  */
 #[Route('/product')]
 class ProductController extends AbstractController

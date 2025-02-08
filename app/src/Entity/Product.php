@@ -65,6 +65,8 @@ class Product
     /**
      * Returns the name.
      * @return string the name.
+     *
+     * @psalm-api
      */
     public function getName(): string
     {
@@ -74,6 +76,8 @@ class Product
     /**
      * Returns the description.
      * @return null|string the description.
+     *
+     * @psalm-api
      */
     public function getDescription(): ?string
     {
@@ -86,6 +90,8 @@ class Product
     /**
      * Changes the name.
      * @param string $name the name.
+     *
+     * @psalm-api
      */
     public function setName(string $name): void
     {
@@ -95,6 +101,8 @@ class Product
     /**
      * Changes the description.
      * @param null|string $description the description.
+     *
+     * @psalm-api
      */
     public function setDescription(?string $description): void
     {

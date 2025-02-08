@@ -18,6 +18,9 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * The constructor.
      * @param \Doctrine\Persistence\ManagerRegistry $registry the registry manager.
+     *
+     * @psalm-api
+     * @psalm-suppress PossiblyUnusedParam
      */
     public function __construct(ManagerRegistry $registry)
     {
