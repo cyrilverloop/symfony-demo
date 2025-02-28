@@ -12,10 +12,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * A product entity.
+ *
+ * @psalm-api
  */
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[UniqueEntity(fields: 'name', message: 'product.name.uniqueEntity')]
-final class Product
+class Product
 {
     // Traits :
     use IntId;
