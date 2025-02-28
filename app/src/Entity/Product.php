@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[UniqueEntity(fields: 'name', message: 'product.name.uniqueEntity')]
-class Product
+final class Product
 {
     // Traits :
     use IntId;

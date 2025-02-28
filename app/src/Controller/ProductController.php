@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @psalm-api
  */
 #[Route('/product')]
-class ProductController extends AbstractController
+final class ProductController extends AbstractController
 {
     // Methods :
 

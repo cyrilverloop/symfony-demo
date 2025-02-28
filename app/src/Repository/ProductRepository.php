@@ -11,7 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * The product repository.
  */
-class ProductRepository extends ServiceEntityRepository
+final class ProductRepository extends ServiceEntityRepository
 {
     // Magic methods :
 
@@ -19,8 +19,8 @@ class ProductRepository extends ServiceEntityRepository
      * The constructor.
      * @param \Doctrine\Persistence\ManagerRegistry $registry the registry manager.
      *
-     * @psalm-api
-     * @psalm-suppress PossiblyUnusedParam
+     * @psalm-suppress PossiblyUnusedMethod
+     * @psalm-suppress UnusedParam
      */
     public function __construct(ManagerRegistry $registry)
     {

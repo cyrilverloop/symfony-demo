@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @psalm-api
  */
-class PagesController extends AbstractController
+final class PagesController extends AbstractController
 {
     // Methods :
 

@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 /**
  * A product form.
  */
-class ProductType extends AbstractType
+final class ProductType extends AbstractType
 {
     // Methods :
 
@@ -23,6 +23,7 @@ class ProductType extends AbstractType
      * @param \Symfony\Component\Form\FormBuilderInterface $builder the form builder.
      * @param array $options the options.
      */
+    #[\Override()]
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -58,6 +59,7 @@ class ProductType extends AbstractType
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver the options resolver.
      */
+    #[\Override()]
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
