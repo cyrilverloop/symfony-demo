@@ -75,6 +75,16 @@ To stop the containers :
 user@host symfony-demo$ docker compose down
 ```
 
+### Optional
+
+You can add some default aliases in the container :
+```shellsession
+user@host symfony-demo$ cp .bashrc.dist .bashrc
+user@host symfony-demo$ cp compose.override.yaml.dist compose.override.yaml
+```
+
+The `.bashrc` and `compose.override.yaml` files are in the `.gitignore` file and can be customised.
+Set your timezone with the `TZ` environment variable, or comment/remove the line to disable it.
 
 ## Tests
 

@@ -1,0 +1,7 @@
+services:
+    app:
+        environment:
+            - ENV=/root/.bashrc
+            - TZ=YOUR/ZONE
+        volumes:
+            - ./.bashrc:/root/.bashrc
