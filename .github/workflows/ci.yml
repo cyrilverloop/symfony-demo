@@ -112,7 +112,7 @@ jobs:
         php-version: '8.4'
 
     - name: Run PHPUnit test
-      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console make:migration -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
+      run: cd app/ && ./bin/console doctrine:database:create -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
 
   static-analysis:
     needs: phplint
