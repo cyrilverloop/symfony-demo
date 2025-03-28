@@ -10,7 +10,7 @@
         "cyril-verloop/doctrine-entities": "^9.0",
         "cyril-verloop/templates-bundle": "^1.0",
         "doctrine/dbal": "^4.2.3",
-        "doctrine/doctrine-bundle": "^2.13.2",
+        "doctrine/doctrine-bundle": "^2.14.0",
         "doctrine/doctrine-migrations-bundle": "^3.4.1",
         "doctrine/orm": "^3.3.2",
         "phpdocumentor/reflection-docblock": "^5.6.1",

@@ -14,9 +14,6 @@
             "config/packages/test/dama_doctrine_test_bundle.yaml"
         ]
     },
-    "doctrine/cache": {
-        "version": "1.11.3"
-    },
     "doctrine/collections": {
         "version": "1.6.7"
     },
@@ -361,9 +358,6 @@
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.23.0"
-    },
-    "symfony/polyfill-php80": {
-        "version": "v1.25.0"
     },
     "symfony/process": {
         "version": "v5.3.0"
