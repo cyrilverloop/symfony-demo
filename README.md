@@ -24,6 +24,14 @@ This demo uses 3 Docker images based on :
 2. `php:apache` to run the web server;
 3. `composer` to install PHP dependencies;
 
+The `app` (php) container depends on the `mariadb` container.
+After each `docker compose run --rm app ...` command,
+Docker will not remove the dependencies (`mariadb` and network).
+You can remove the dependencies with :
+```shellsession
+user@host symfony-demo$ docker compose down
+```
+
 ### Building the image
 
 Define a mariadb root password in the `./mariadb/.password` file (see `./mariadb/.password.dist` example)

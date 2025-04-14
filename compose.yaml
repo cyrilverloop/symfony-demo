@@ -2,6 +2,12 @@ services:
     mariadb:
         environment:
             - MARIADB_ROOT_PASSWORD_FILE=/root/mysql-root-password.txt
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            start_period: 10s
+            interval: 10s
+            timeout: 5s
+            retries: 3
         image: mariadb
         ports:
             - "3306:3306"
@@ -11,6 +17,9 @@ services:
 
     app:
         build: ./app/
+        depends_on:
+            mariadb:
+                condition: service_healthy
         ports:
             - "80:80"
         volumes:
