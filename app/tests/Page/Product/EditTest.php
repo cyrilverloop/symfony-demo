@@ -20,7 +20,6 @@ use Symfony\Component\DomCrawler\Crawler;
 #[
     PA\CoversClass(ProductController::class),
     PA\UsesClass(Product::class),
-    PA\UsesClass(ProductController::class),
     PA\UsesClass(ProductRepository::class),
     PA\UsesClass(ProductType::class),
     PA\Group('pages'),
