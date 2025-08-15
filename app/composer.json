@@ -12,7 +12,7 @@
         "doctrine/dbal": "^4.3.2",
         "doctrine/doctrine-bundle": "^2.15.1",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",
-        "doctrine/orm": "^3.5.1",
+        "doctrine/orm": "^3.5.2",
         "phpdocumentor/reflection-docblock": "^5.6.2",
         "phpstan/phpdoc-parser": "^2.2",
         "symfony/asset": "7.3.*",
