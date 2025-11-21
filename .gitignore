@@ -12,7 +12,6 @@
 /app/vendor/
 /app/.env.local
 /app/.env.*.local
-/mariadb/datas/
 /.bashrc
 /.env
 /compose.override.yaml
