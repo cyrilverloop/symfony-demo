@@ -1,7 +1,7 @@
 services:
     mariadb:
         environment:
-            - MARIADB_ROOT_PASSWORD_FILE=/root/mysql-root-password.txt
+            - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
         healthcheck:
             test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
             start_period: 10s
@@ -13,7 +13,6 @@ services:
             - "3306:3306"
         volumes:
             - ./mariadb/datas/:/var/lib/mysql/
-            - ./mariadb/.password:/root/mysql-root-password.txt
 
     app:
         build: ./app/

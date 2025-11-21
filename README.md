@@ -34,8 +34,14 @@ user@host symfony-demo$ docker compose down
 
 ### Building the image
 
-Define a mariadb root password in the `./mariadb/.password` file (see `./mariadb/.password.dist` example)
-and build the app image :
+Copy the example environnement file :
+```shellsession
+user@host symfony-demo$ cp ./.env.dist ./.env
+```
+
+Fill in and uncomment the `MARIADB_ROOT_PASSWORD` variable in `./.env`.
+
+Build the app image :
 ```shellsession
 user@host symfony-demo$ docker compose build
 ```
