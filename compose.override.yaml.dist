@@ -1,7 +1,13 @@
 services:
-    app:
+    httpd:
         environment:
-            - ENV=/root/.bashrc
+            - TZ=YOUR/ZONE
+        ports:
+            - "8000:8000"
+
+    php:
+        environment:
             - TZ=YOUR/ZONE
         volumes:
-            - ./.bashrc:/root/.bashrc
+            - ./.cache/composer/:/var/www/.composer/
+            - ./.cache/phive/:/var/www/.phive/

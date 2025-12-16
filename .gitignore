@@ -1,3 +1,4 @@
+/.cache/
 /app/assets/vendor/
 /app/ci/infection/
 /app/ci/logs/
@@ -12,6 +13,13 @@
 /app/vendor/
 /app/.env.local
 /app/.env.*.local
+/httpd/logs/
+!/httpd/logs/.gitignore
+/httpd/.ashrc
+/php/xdebug/
+!/php/xdebug/.gitignore
+/php/.ashrc
+/tls/server.*
 /.bashrc
 /.env
 /compose.override.yaml

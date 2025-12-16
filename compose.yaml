@@ -14,13 +14,54 @@ services:
         volumes:
             - ./mariadb/datas/:/var/lib/mysql/
 
-    app:
-        build: ./app/
+    httpd:
+        env_file: ./.env
+        build:
+            args:
+                - uid=${uid}
+                - user=${user}
+            context: ./httpd/
+        environment:
+            - ENV=/var/www/.ashrc
+        user: ${uid}:${gid}
+        volumes:
+            - ./httpd/.ashrc:/var/www/.ashrc
+            - ./httpd/logs/:/usr/local/apache2/logs/
+            - ./tls/server.crt:/usr/local/apache2/key/server.crt
+            - ./tls/server.key:/usr/local/apache2/key/server.key
+            - ./app/:/var/www/app/
+        working_dir: /var/www/
+
+    php:
+        env_file: ./.env
+        build:
+            args:
+                - uid=${uid}
+                - user=${user}
+            context: ./php/
         depends_on:
             mariadb:
                 condition: service_healthy
-        ports:
-            - "80:80"
+            httpd:
+                condition: service_started
+        environment:
+            - ENV=/var/www/.ashrc
+        user: ${uid}:${gid}
         volumes:
-            - ./app/:/var/www/html/
-        working_dir: /var/www/html/
+            - ./php/xdebug/:/usr/local/var/xdebug/
+            - ./php/.ashrc:/var/www/.ashrc
+            - ./app/:/var/www/app/
+        working_dir: /var/www/app/
+
+    tls:
+        image: alpine/openssl
+        profiles:
+            - tls
+        user: ${uid}:${gid}
+        volumes:
+            - ./tls/:/tls/
+        working_dir: /tls/
+
+networks:
+    default:
+        name: sf-demo

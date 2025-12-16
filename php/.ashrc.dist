@@ -3,14 +3,14 @@ alias ll='ls -l'
 alias la='ll -a'
 
 # Symfony-demo
-alias cdtoapp='cd /var/www/html/'
+alias cdtoapp='cd /var/www/app/'
 alias update='echo "Updating SYMFONY-DEMO :"; cdtoapp && (composer update -o && phive update)'
 alias migratetest='cdtoapp && rm -f ./var/*.db ./migrations-test/*.php && ./bin/console make:migration -e test; ./bin/console doctrine:migrations:migrate --no-interaction -e test'
 
 alias psalm='cdtoapp && ./tools/psalm -c ./ci/psalm.xml --report=./psalm/psalm.txt --output-format=text'
 alias phpunit='migratetest && ./tools/phpunit -c ./ci/phpunit.xml'
 alias phpunitg='phpunit --group'
-alias infection='phpunit && ./tools/infection  -c./ci/infection.json'
+alias infection='phpunit && ./tools/infection -c./ci/infection.json'
 alias phpdoc='cdtoapp && ./tools/phpdocumentor --config ./ci/phpdoc.xml'
 alias phpcs='cdtoapp && ./tools/phpcs --standard=PSR12 --extensions=php -p ./src/ ./tests/ --report-file=./ci/logs/checkstyle.txt'
 alias phpcbf='cdtoapp && ./tools/phpcbf --standard=PSR12 --extensions=php -p ./src/ ./tests/'

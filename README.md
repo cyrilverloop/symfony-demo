@@ -1,12 +1,12 @@
 # symfony-demo
 
-This is a simple Symfony 7.3 demo project using PHP 8.4.
+This is a simple Symfony 7.3 demo project using PHP 8.5.
 
 **This demo is using AssetMapper. To see a version with Encore, switch to the unmaintained `webpack-encore` branch.**
 
 [![License](https://img.shields.io/github/license/cyrilverloop/symfony-demo)](https://github.com/cyrilverloop/symfony-demo/blob/trunk/LICENSE)
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
-[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.4-%23777BB4?logo=php&style=flat)](https://www.php.net/)
+[![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.5-%23777BB4?logo=php&style=flat)](https://www.php.net/)
 
 
 ## Installation
@@ -19,29 +19,52 @@ user@host projects$ git clone https://github.com/cyrilverloop/symfony-demo.git
 user@host projects$ cd symfony-demo
 ```
 
-This demo uses 3 Docker images based on :
-1. `mariadb` to run the database;
-2. `php:apache` to run the web server;
-3. `composer` to install PHP dependencies;
+This demo uses Docker images based on :
+1. `mariadb` for the database;
+2. `httpd:alpine` for the web server;
+3. `php:8.5.0-fpm-alpine` for php files;
+4. `alpine/openssl` to generate a TLS certificate.
 
-The `app` (php) container depends on the `mariadb` container.
-After each `docker compose run --rm app ...` command,
-Docker will not remove the dependencies (`mariadb` and network).
-You can remove the dependencies with :
+The `app` (php) container depends on the `mariadb` and `httpd` containers.
+After each `docker compose run --rm php ...` command,
+Docker will not remove the dependencies (`mariadb`, `httpd` and network).
+You can remove them with :
 ```shellsession
 user@host symfony-demo$ docker compose down
 ```
 
-### Building the image
+### Create the cache directories (recommended)
 
-Copy the example environnement file :
+It is recommended to use cache directories for the downloaded dependencies (Composer and Phive).
+If you do not already have cache directories, create them with :
 ```shellsession
-user@host symfony-demo$ cp ./.env.dist ./.env
+user@host symfony-demo$ mkdir -p ./.cache/composer/ ./.cache/phive/
 ```
 
-Fill in and uncomment the `MARIADB_ROOT_PASSWORD` variable in `./.env`.
+Default paths are configured in `compose.override.yaml.dist`
+and you can customise them in `compose.override.yaml`.
 
-Build the app image :
+### Generate a certificate
+
+Generate a TLS self-signed certificate with the following script :
+```shellsession
+user@host symfony-demo$ ./tls/create-self-signed-certificate.sh
+```
+
+### Building the images
+
+Copy the example files :
+```shellsession
+user@host symfony-demo$ cp compose.override.yaml.dist compose.override.yaml
+user@host symfony-demo$ cp ./.env.dist ./.env
+user@host symfony-demo$ cp httpd/.ashrc.dist httpd/.ashrc
+user@host symfony-demo$ cp php/.ashrc.dist php/.ashrc
+```
+
+Fill in the variables in `./.env`.
+These files are in the `.gitignore` file and can be customised.
+
+Build the images :
 ```shellsession
 user@host symfony-demo$ docker compose build
 ```
@@ -51,20 +74,20 @@ user@host symfony-demo$ docker compose build
 Define the database configuration for Symfony (see `./app/.env` or `./app/.env.local.dist`)
 and install the PHP dependencies :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app composer install -o [--no-dev]
+user@host symfony-demo$ docker compose run --rm php composer install -o [--no-dev]
 ```
 The "--no-dev" option is for the production environment.
 
 For the development and the test environments only :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0
+user@host symfony-demo$ docker compose run --rm php phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0
 ```
 
 ### Creating the database
 
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:database:create [-e test]
-user@host symfony-demo$ docker compose run --rm app ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:database:create [-e test]
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
 ```
 The "-e test" option is to for the test environment which uses Sqlite.
 
@@ -72,7 +95,7 @@ The "-e test" option is to for the test environment which uses Sqlite.
 ### Serving assets in production
 
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app bin/console asset-map:compile
+user@host symfony-demo$ docker compose run --rm php bin/console asset-map:compile
 ```
 
 ## Usage
@@ -82,23 +105,12 @@ Once the installation is complete, you can start the containers with :
 user@host symfony-demo$ docker compose up -d
 ```
 
-The demo will be available in your browser through : http://127.0.0.1/index.php/
+The demo will be available in your browser through : https://localhost:8000/
 
 To stop the containers :
 ```shellsession
 user@host symfony-demo$ docker compose down
 ```
-
-### Optional
-
-You can add some default aliases in the container :
-```shellsession
-user@host symfony-demo$ cp .bashrc.dist .bashrc
-user@host symfony-demo$ cp compose.override.yaml.dist compose.override.yaml
-```
-
-The `.bashrc` and `compose.override.yaml` files are in the `.gitignore` file and can be customised.
-Set your timezone with the `TZ` environment variable, or comment/remove the line to disable it.
 
 ## Tests
 
@@ -106,21 +118,21 @@ First, you need to [configure the app](#installing-php-dependencies)
 and [create the database](#creating-the-database) for the test environment.
 Then, run the tests :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/phpunit -c ./ci/phpunit.xml
+user@host symfony-demo$ docker compose run --rm php ./tools/phpunit -c ./ci/phpunit.xml
 ```
-The generated outputs will be in `./ci/phpunit/`.
+The generated outputs will be in `./app/ci/phpunit/`.
 
 And, run the mutation tests :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/infection -c./ci/infection.json
+user@host symfony-demo$ docker compose run --rm php ./tools/infection -c./ci/infection.json
 ```
-The generated outputs will be in `./ci/infection/`.
+The generated outputs will be in `./app/ci/infection/`.
 
 
 ## PHPDoc
 
 To generate the PHPDoc, use this command after [installing phive dependencies](#installing-php-dependencies) :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm app ./tools/phpDocumentor --config ./ci/phpdoc.xml
+user@host symfony-demo$ docker compose run --rm php ./tools/phpDocumentor --config ./ci/phpdoc.xml
 ```
 The generated HTML documentation will be in `./app/ci/phpdoc/`.
