@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * The product repository.
+ *
+ * @psalm-suppress MissingTemplateParam
  */
 final class ProductRepository extends ServiceEntityRepository
 {
@@ -20,7 +22,6 @@ final class ProductRepository extends ServiceEntityRepository
      * @param \Doctrine\Persistence\ManagerRegistry $registry the registry manager.
      *
      * @psalm-suppress PossiblyUnusedMethod
-     * @psalm-suppress UnusedParam
      */
     public function __construct(ManagerRegistry $registry)
     {

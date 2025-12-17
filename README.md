@@ -1,6 +1,6 @@
 # symfony-demo
 
-This is a simple Symfony 7.3 demo project using PHP 8.5.
+This is a simple Symfony 8.0 demo project using PHP 8.5.
 
 **This demo is using AssetMapper. To see a version with Encore, switch to the unmaintained `webpack-encore` branch.**
 
