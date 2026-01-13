@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
-use CyrilVerloop\DoctrineEntities\IntId;
+use CyrilVerloop\DoctrineEntities\AbstractIntId;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,12 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[UniqueEntity(fields: 'name', message: 'product.name.uniqueEntity')]
-class Product
+class Product extends AbstractIntId
 {
-    // Traits :
-    use IntId;
-
-
     // Properties :
 
     /**
@@ -56,7 +52,8 @@ class Product
      */
     public function __construct(string $name = '', ?string $description = null)
     {
-        $this->id = null;
+        parent::__construct();
+
         $this->name = $name;
         $this->description = $description;
     }
