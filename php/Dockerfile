@@ -1,5 +1,5 @@
 # PHP-FPM :
-FROM php:8.5.0-fpm-alpine
+FROM php:8.5.2-fpm-alpine
 
 RUN apk update \
     && apk add --no-cache git linux-headers tzdata gnupg icu-dev icu-data-full oniguruma-dev sqlite-dev libzip-dev $PHPIZE_DEPS \
