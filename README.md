@@ -8,7 +8,6 @@ This is a simple Symfony 8.0 demo project using PHP 8.5.
 [![Type coverage](https://shepherd.dev/github/cyrilverloop/symfony-demo/coverage.svg)](https://shepherd.dev/github/cyrilverloop/symfony-demo)
 [![Minimum PHP version](https://img.shields.io/badge/php-%3E%3D8.5-%23777BB4?logo=php&style=flat)](https://www.php.net/)
 
-
 ## Installation
 
 Downloading the project :
@@ -20,14 +19,15 @@ user@host projects$ cd symfony-demo
 ```
 
 This demo uses Docker images based on :
-1. `mariadb` for the database;
-2. `httpd:alpine` for the web server;
-3. `php:8.5.0-fpm-alpine` for php files;
-4. `alpine/openssl` to generate a TLS certificate.
+1. `mariadb` for the MariaDB database;
+2. `postgres` for the PostgreSQL database;
+3. `httpd:alpine` for the web server;
+4. `php:8.5.0-fpm-alpine` for php files;
+5. `alpine/openssl` to generate a TLS certificate.
 
-The `app` (php) container depends on the `mariadb` and `httpd` containers.
+The `app` (php) container depends on the `mariadb`, `postgres` and `httpd` containers.
 After each `docker compose run --rm php ...` command,
-Docker will not remove the dependencies (`mariadb`, `httpd` and network).
+Docker will not remove the dependencies (`mariadb`, `postgres`, `httpd` and network).
 You can remove them with :
 ```shellsession
 user@host symfony-demo$ docker compose down
@@ -83,14 +83,34 @@ For the development and the test environments only :
 user@host symfony-demo$ docker compose run --rm php phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0
 ```
 
-### Creating the database
+### Creating the databases
+
+#### Development and production environments
+
+For MariaDB :
+```shellsession
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:database:create --connection=default
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:diff --configuration ./config/migrations/furniture.yaml
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/furniture.yaml --no-interaction
+```
+
+For PostgreSQL :
+```shellsession
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:database:create --connection=postgres
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:diff --configuration ./config/migrations/clothing.yaml
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/clothing.yaml --no-interaction
+```
+
+#### Test environment
+
+The test environment uses Sqlite instead of MariaDB and PostgreSQL.
 
 ```shellsession
-user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:database:create [-e test]
-user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate [--no-interaction] [-e test]
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:diff --configuration ./config/migrations/furniture_test.yaml -e test
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:diff --configuration ./config/migrations/clothing_test.yaml -e test
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/furniture_test.yaml --no-interaction -e test
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/clothing_test.yaml --no-interaction -e test
 ```
-The "-e test" option is to for the test environment which uses Sqlite.
-
 
 ### Serving assets in production
 
@@ -127,7 +147,6 @@ And, run the mutation tests :
 user@host symfony-demo$ docker compose run --rm php ./tools/infection -c./ci/infection.json
 ```
 The generated outputs will be in `./app/ci/infection/`.
-
 
 ## PHPDoc
 

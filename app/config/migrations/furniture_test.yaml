@@ -1,0 +1,3 @@
+em: furniture
+migrations_paths:
+    'DoctrineMigrations': './migrations-test/furniture/'

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'New chair' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-edit']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Create new chair</h1>
+
+        {{ include('furniture/chair/_form.html.twig') }}
+
+        <a href="{{ path('furniture_chair_index') }}" class="btn btn-secondary">back to list</a>
+    </div>
+{% endblock %}

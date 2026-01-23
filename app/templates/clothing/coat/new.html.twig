@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'New coat' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-edit']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Create new coat</h1>
+
+        {{ include('clothing/coat/_form.html.twig') }}
+
+        <a href="{{ path('clothing_coat_index') }}" class="btn btn-secondary">back to list</a>
+    </div>
+{% endblock %}

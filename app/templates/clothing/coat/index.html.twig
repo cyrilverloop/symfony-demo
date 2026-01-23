@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Coat index' %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Coat index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for coat in coats %}
+                <tr>
+                    <td>{{ coat.id }}</td>
+                    <td>{{ coat.name }}</td>
+                    <td>{{ coat.description }}</td>
+                    <td>
+                        <a href="{{ path('clothing_coat_show', {'id': coat.id}) }}"
+                            class="btn btn-primary">
+                            show
+                        </a>
+
+                        <a href="{{ path('clothing_coat_edit', {'id': coat.id}) }}"
+                           class="btn btn-primary">
+                            edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('clothing_coat_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}

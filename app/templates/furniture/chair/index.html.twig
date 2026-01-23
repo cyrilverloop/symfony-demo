@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Chair index' %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Chair index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for chair in chairs %}
+                <tr>
+                    <td>{{ chair.id }}</td>
+                    <td>{{ chair.name }}</td>
+                    <td>{{ chair.description }}</td>
+                    <td>
+                        <a href="{{ path('furniture_chair_show', {'id': chair.id}) }}"
+                            class="btn btn-primary">
+                            show
+                        </a>
+
+                        <a href="{{ path('furniture_chair_edit', {'id': chair.id}) }}"
+                           class="btn btn-primary">
+                            edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('furniture_chair_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}

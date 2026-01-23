@@ -17,6 +17,10 @@ final class PagesController extends AbstractController
 {
     // Methods :
 
+    /**
+     * Displays the home page.
+     * @return \Symfony\Component\HttpFoundation\Response the response.
+     */
     #[Route('/', name: 'home')]
     public function home(): Response
     {

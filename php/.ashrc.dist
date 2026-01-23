@@ -5,7 +5,13 @@ alias la='ll -a'
 # Symfony-demo
 alias cdtoapp='cd /var/www/app/'
 alias update='echo "Updating SYMFONY-DEMO :"; cdtoapp && (composer update -o && phive update)'
-alias migratetest='cdtoapp && rm -f ./var/*.db ./migrations-test/*.php && ./bin/console make:migration -e test; ./bin/console doctrine:migrations:migrate --no-interaction -e test'
+alias migratetest='cdtoapp && \
+    rm -f ./var/*.db ./migrations-test/**/*.php && \
+    ./bin/console doctrine:migrations:diff --configuration ./config/migrations/furniture_test.yaml -e test; \
+    ./bin/console doctrine:migrations:diff --configuration ./config/migrations/clothing_test.yaml -e test; \
+    ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/furniture_test.yaml --no-interaction -e test; \
+    ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/clothing_test.yaml --no-interaction -e test \
+'
 
 alias psalm='cdtoapp && ./tools/psalm -c ./ci/psalm.xml --report=./psalm/psalm.txt --output-format=text'
 alias phpunit='migratetest && ./tools/phpunit -c ./ci/phpunit.xml'

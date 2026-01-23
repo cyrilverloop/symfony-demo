@@ -2,9 +2,9 @@
 FROM php:8.5-fpm-alpine
 
 RUN apk update \
-    && apk add --no-cache git linux-headers tzdata gnupg icu-dev icu-data-full oniguruma-dev sqlite-dev libzip-dev $PHPIZE_DEPS \
-    && docker-php-ext-install intl mbstring pdo pdo_mysql pdo_sqlite mysqli pcntl posix zip \
-    && docker-php-ext-enable intl mbstring pdo pdo_mysql pdo_sqlite mysqli pcntl posix zip \
+    && apk add --no-cache git linux-headers tzdata gnupg icu-dev icu-data-full libpq-dev oniguruma-dev sqlite-dev libzip-dev $PHPIZE_DEPS \
+    && docker-php-ext-install intl mbstring pdo pdo_mysql pdo_pgsql pdo_sqlite mysqli pcntl posix \
+    && docker-php-ext-enable intl mbstring pdo pdo_mysql pdo_pgsql pdo_sqlite mysqli pcntl posix \
     && apk del --purge $PHPIZE_DEPS
 
 # Adding PIE :

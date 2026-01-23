@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Coat' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-delete']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Coat</h1>
+
+        <div class="card">
+            <h5 class="card-header">{{ coat.name }}</h5>
+
+            <div class="card-body">
+                <p class="card-text">{{ coat.description }}</p>
+
+                <a href="{{ path('clothing_coat_index') }}" class="btn btn-secondary">
+                    back to list
+                </a>
+
+                <a href="{{ path('clothing_coat_edit', {'id': coat.id}) }}" class="btn btn-primary">
+                    edit
+                </a>
+
+                {{ include('clothing/coat/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

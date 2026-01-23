@@ -1,28 +1,60 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
+        connections:
+            default:
+                url: '%env(resolve:MARIADB_URL)%'
+            postgres:
+                url: '%env(resolve:POSTGRES_URL)%'
+        default_connection: default
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '16'
 
-        profiling_collect_backtrace: '%kernel.debug%'
+#        profiling_collect_backtrace: '%kernel.debug%'
     orm:
-        validate_xml_mapping: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        identity_generation_preferences:
-            Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
-        auto_mapping: true
-        mappings:
-            App:
-                type: attribute
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
-            CVDE:
-                alias: CyrilVerloop
-                dir: '%kernel.project_dir%/vendor/cyril-verloop/doctrine-entities/src'
-                prefix: 'CyrilVerloop\DoctrineEntities'
+        default_entity_manager: furniture
+        entity_managers:
+            furniture:
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                connection: default
+                mappings:
+                    CVDE:
+                        alias: CyrilVerloop
+                        dir: '%kernel.project_dir%/vendor/cyril-verloop/doctrine-entities/src'
+                        prefix: 'CyrilVerloop\DoctrineEntities'
+                        type: attribute
+                    Furniture:
+                        alias: Furniture
+                        dir: '%kernel.project_dir%/src/Entity/Furniture'
+                        prefix: 'App\Entity\Furniture'
+                        type: attribute
+                    Product:
+                        alias: Product
+                        dir: '%kernel.project_dir%/src/Entity/Product'
+                        prefix: 'App\Entity\Product'
+                        type: attribute
+            clothing:
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+                identity_generation_preferences:
+                    Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
+                connection: postgres
+                mappings:
+                    Clothing:
+                        alias: Clothing
+                        dir: '%kernel.project_dir%/src/Entity/Clothing'
+                        prefix: 'App\Entity\Clothing'
+                        type: attribute
+                    CVDE:
+                        alias: CyrilVerloop
+                        dir: '%kernel.project_dir%/vendor/cyril-verloop/doctrine-entities/src'
+                        prefix: 'CyrilVerloop\DoctrineEntities'
+                        type: attribute
+                    Product:
+                        alias: Product
+                        dir: '%kernel.project_dir%/src/Entity/Product'
+                        prefix: 'App\Entity\Product'
+                        type: attribute
         controller_resolver:
             auto_mapping: false
 

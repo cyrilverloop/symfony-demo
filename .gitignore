@@ -5,7 +5,8 @@
 /app/ci/phpdoc/
 /app/ci/phpunit/
 /app/ci/psalm/
-/app/migrations-test/*.php
+/app/migrations/**/*.php
+/app/migrations-test/**/*.php
 /app/node_modules/
 /app/public/assets/
 /app/tools/
@@ -16,10 +17,11 @@
 /httpd/logs/
 !/httpd/logs/.gitignore
 /httpd/.ashrc
+/mariadb/datas/
 /php/xdebug/
 !/php/xdebug/.gitignore
 /php/.ashrc
+/postgres/datas/
 /tls/server.*
-/.bashrc
 /.env
 /compose.override.yaml

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Chair' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-delete']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Chair</h1>
+
+        <div class="card">
+            <h5 class="card-header">{{ chair.name }}</h5>
+
+            <div class="card-body">
+                <p class="card-text">{{ chair.description }}</p>
+
+                <a href="{{ path('furniture_chair_index') }}" class="btn btn-secondary">
+                    back to list
+                </a>
+
+                <a href="{{ path('furniture_chair_edit', {'id': chair.id}) }}" class="btn btn-primary">
+                    edit
+                </a>
+
+                {{ include('furniture/chair/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
