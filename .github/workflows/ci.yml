@@ -112,7 +112,13 @@ jobs:
         php-version: '8.5'
 
     - name: Run PHPUnit test
-      run: cd app/ && ./bin/console make:migration -e test && ./bin/console doctrine:migrations:migrate --no-interaction -e test && ./tools/phpunit -c ./ci/phpunit.xml
+      run: |
+        cd app/ && \
+        (./bin/console doctrine:migrations:diff --configuration ./config/migrations/furniture_test.yaml -e test; \
+        ./bin/console doctrine:migrations:diff --configuration ./config/migrations/clothing_test.yaml -e test) && \
+        (./bin/console doctrine:migrations:migrate --configuration ./config/migrations/furniture_test.yaml --no-interaction -e test; \
+        ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/clothing_test.yaml --no-interaction -e test) && \
+        ./tools/phpunit -c ./ci/phpunit.xml
 
   static-analysis:
     needs: phplint
