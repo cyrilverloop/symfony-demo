@@ -21,13 +21,14 @@ user@host projects$ cd symfony-demo
 This demo uses Docker images based on :
 1. `mariadb` for the MariaDB database;
 2. `postgres` for the PostgreSQL database;
-3. `httpd:alpine` for the web server;
-4. `php:8.5.0-fpm-alpine` for php files;
-5. `alpine/openssl` to generate a TLS certificate.
+3. `mongodb`,` for the MongoDB database;
+4. `httpd:alpine` for the web server;
+5. `php:8.5.0-fpm-alpine` for php files;
+6. `alpine/openssl` to generate a TLS certificate.
 
-The `app` (php) container depends on the `mariadb`, `postgres` and `httpd` containers.
+The `app` (php) container depends on the `mariadb`, `postgres`, `mongodb` and `httpd` containers.
 After each `docker compose run --rm php ...` command,
-Docker will not remove the dependencies (`mariadb`, `postgres`, `httpd` and network).
+Docker will not remove the dependencies (`mariadb`, `postgres`, `mongodb`, `httpd` and network).
 You can remove them with :
 ```shellsession
 user@host symfony-demo$ docker compose down
@@ -99,6 +100,11 @@ For PostgreSQL :
 user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:database:create --connection=postgres
 user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:diff --configuration ./config/migrations/clothing.yaml
 user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:migrations:migrate --configuration ./config/migrations/clothing.yaml --no-interaction
+```
+
+For MongoDB (optional) :
+```shellsession
+user@host symfony-demo$ docker compose run --rm php ./bin/console doctrine:mongodb:schema:create
 ```
 
 #### Test environment

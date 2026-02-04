@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Book index' %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Book index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.firstname }} {{ book.author.lastname }}</td>
+                    <td>
+                        <a href="{{ path('library_book_show', {'id': book.id}) }}"
+                            class="btn btn-primary">
+                            show
+                        </a>
+
+                        <a href="{{ path('library_book_edit', {'id': book.id}) }}"
+                           class="btn btn-primary">
+                            edit
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('library_book_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}

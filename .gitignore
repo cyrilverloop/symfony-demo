@@ -18,6 +18,7 @@
 !/httpd/logs/.gitignore
 /httpd/.ashrc
 /mariadb/datas/
+/mongodb/datas/
 /php/xdebug/
 !/php/xdebug/.gitignore
 /php/.ashrc

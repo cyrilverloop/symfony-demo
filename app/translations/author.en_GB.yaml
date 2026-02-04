@@ -1,0 +1,9 @@
+form:
+    firstname:
+        label: First name
+        placeholder: The first name
+        title: The first name of the author.
+    lastname:
+        label: Last name
+        placeholder: The last name
+        title: The last name of the author.

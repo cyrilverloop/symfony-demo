@@ -6,6 +6,7 @@ jobs:
   install:
 
     runs-on: ubuntu-24.04
+    environment: test
 
     steps:
     - uses: actions/checkout@v4
@@ -22,12 +23,15 @@ jobs:
         path: app/vendor
         key: composer-lock-${{ hashFiles('**/composer.lock') }}
 
+    - name: Define environment variables
+      run: cd app/ && echo "APP_ENV=test" > .env.local && echo "MONGODB_URI=${{ vars.MONGODB_URI }}" >> .env.test.local
+
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: cd app/ && echo 'APP_ENV=test' > .env.local && composer install --prefer-dist --no-progress --no-suggest
+      run: cd app/ && composer install --prefer-dist --no-progress --no-suggest
 
     - name: Install assets
-      run: cd app/ && echo 'DATABASE_URL=sqlite:///%kernel.project_dir%/var/app.db' >> .env.local && ./bin/console importmap:install
+      run: cd app/ && ./bin/console importmap:install
 
     - name: Cache phive packages
       id: phive-tools-cache
@@ -91,6 +95,7 @@ jobs:
   test:
     needs: phplint
     runs-on: ubuntu-24.04
+    environment: test
 
     steps:
     - uses: actions/download-artifact@v4
@@ -100,16 +105,20 @@ jobs:
     - name: Untar project.
       run:  tar -xf project.tar
 
-    - name: Setup PHP with Xdebug
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.12.1
+      with:
+        mongodb-version: '8.2.4'
+        mongodb-username: ${{ secrets.MONGODB_USER }}
+        mongodb-password: ${{ secrets.MONGODB_PASSWORD }}
+        mongodb-db: symfony-demo-test
+
+    - name: Setup PHP with Xdebug and MongoDB
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.5'
         coverage: xdebug
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.5'
+        extensions: mongodb-mongodb/mongo-php-driver
 
     - name: Run PHPUnit test
       run: |

@@ -29,6 +29,22 @@ services:
         volumes:
             - ./postgres/datas/:/var/lib/postgresql/data
 
+    mongodb:
+        env_file: ./.env
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+        healthcheck:
+            test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+            interval: 10s
+            timeout: 3s
+            retries: 3
+        image: mongo:8.2.4
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./mongodb/datas/:/data/db
+
     httpd:
         env_file: ./.env
         build:
@@ -58,6 +74,8 @@ services:
             mariadb:
                 condition: service_healthy
             postgres:
+                condition: service_healthy
+            mongodb:
                 condition: service_healthy
             httpd:
                 condition: service_started

@@ -1,0 +1,7 @@
+form:
+    title:
+        label: Title
+        placeholder: The title
+        title: The title of the book.
+    submit:
+        value: Save

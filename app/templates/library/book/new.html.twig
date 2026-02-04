@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'New book' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-edit']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Create new book</h1>
+
+        {{ include('library/book/_form.html.twig') }}
+
+        <a href="{{ path('library_book_index') }}" class="btn btn-secondary">back to list</a>
+    </div>
+{% endblock %}

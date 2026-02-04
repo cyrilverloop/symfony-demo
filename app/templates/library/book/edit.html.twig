@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{# SEO #}
+
+{% set pageHeadTitle = 'Edit book' %}
+
+
+{# Assets #}
+
+{% block importmap %}
+    {{ importmap(['app', 'product-delete', 'product-edit']) }}
+{% endblock %}
+
+
+{# Body #}
+
+{% block main %}
+    <div class="container">
+        <h1>Edit book</h1>
+
+        {{ include('library/book/_form.html.twig') }}
+
+        <a href="{{ path('library_book_index') }}" class="btn btn-secondary">back to list</a>
+
+        {{ include('library/book/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
