@@ -81,7 +81,7 @@ The "--no-dev" option is for the production environment.
 
 For the development and the test environments only :
 ```shellsession
-user@host symfony-demo$ docker compose run --rm php phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0
+user@host symfony-demo$ docker compose run --rm php phive install --trust-gpg-keys 4AA394086372C20A,99BF4D9A33D65E1E,31C7E470E2138192,8AC0BAA79732DD42,C5095986493B4AA0
 ```
 
 ### Creating the databases
