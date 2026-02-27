@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Library;
 
-use App\Controller\Library\BookController;
+use App\Controller\Library\BookDeleteController;
+use App\Controller\Library\BookEditController;
+use App\Controller\Library\BookIndexController;
 use App\Document\Library\Author;
 use App\Document\Library\Book;
 use App\Form\Library\AuthorType;
@@ -20,9 +22,11 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the book edit page.
  */
 #[
-    PA\CoversClass(BookController::class),
+    PA\CoversClass(BookDeleteController::class),
+    PA\CoversClass(BookEditController::class),
     PA\UsesClass(Author::class),
     PA\UsesClass(Book::class),
+    PA\UsesClass(BookIndexController::class),
     PA\UsesClass(BookRepository::class),
     PA\UsesClass(AuthorType::class),
     PA\UsesClass(BookType::class),
@@ -31,7 +35,7 @@ use Symfony\Component\DomCrawler\Crawler;
     PA\Group('pages_book_edit'),
     PA\Group('book')
 ]
-class EditTest extends WebTestCase
+class BookEditTest extends WebTestCase
 {
     // Traits :
     use GenerateString;

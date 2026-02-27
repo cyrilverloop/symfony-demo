@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Clothing;
 
-use App\Controller\Clothing\CoatController;
+use App\Controller\Clothing\CoatEditController;
+use App\Controller\Clothing\CoatIndexController;
+use App\Controller\Clothing\CoatNewController;
+use App\Controller\Clothing\CoatShowController;
 use App\Entity\Clothing\Coat;
 use App\Form\Clothing\CoatType;
 use App\Repository\Clothing\CoatRepository;
@@ -17,16 +20,19 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the coat index page.
  */
 #[
-    PA\CoversClass(CoatController::class),
+    PA\CoversClass(CoatIndexController::class),
     PA\CoversClass(CoatRepository::class),
     PA\UsesClass(Coat::class),
+    PA\UsesClass(CoatEditController::class),
+    PA\UsesClass(CoatNewController::class),
+    PA\UsesClass(CoatShowController::class),
     PA\UsesClass(CoatType::class),
     PA\Group('pages'),
     PA\Group('pages_coat'),
     PA\Group('pages_coat_index'),
     PA\Group('coat')
 ]
-final class IndexTest extends WebTestCase
+final class CoatIndexTest extends WebTestCase
 {
     // Traits :
     use CoatFixture;

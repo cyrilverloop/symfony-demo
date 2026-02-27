@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Library;
 
-use App\Controller\Library\BookController;
+use App\Controller\Library\BookEditController;
+use App\Controller\Library\BookIndexController;
+use App\Controller\Library\BookNewController;
+use App\Controller\Library\BookShowController;
 use App\Document\Library\Author;
 use App\Document\Library\Book;
 use App\Form\Library\AuthorType;
@@ -19,10 +22,13 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the book index page.
  */
 #[
-    PA\CoversClass(BookController::class),
+    PA\CoversClass(BookIndexController::class),
     PA\CoversClass(BookRepository::class),
     PA\UsesClass(Author::class),
     PA\UsesClass(Book::class),
+    PA\UsesClass(BookEditController::class),
+    PA\UsesClass(BookNewController::class),
+    PA\UsesClass(BookShowController::class),
     PA\UsesClass(AuthorType::class),
     PA\UsesClass(BookType::class),
     PA\Group('pages'),
@@ -30,7 +36,7 @@ use Symfony\Component\DomCrawler\Crawler;
     PA\Group('pages_book_index'),
     PA\Group('book')
 ]
-final class IndexTest extends WebTestCase
+final class BookIndexTest extends WebTestCase
 {
     // Traits :
     use BookFixture;

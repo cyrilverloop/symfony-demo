@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Library;
 
-use App\Controller\Library\BookController;
+use App\Controller\Library\BookIndexController;
+use App\Controller\Library\BookNewController;
 use App\Document\Library\Author;
 use App\Document\Library\Book;
 use App\Form\Library\AuthorType;
@@ -19,9 +20,10 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the book index page.
  */
 #[
-    PA\CoversClass(BookController::class),
+    PA\CoversClass(BookNewController::class),
     PA\UsesClass(Author::class),
     PA\UsesClass(Book::class),
+    PA\UsesClass(BookIndexController::class),
     PA\UsesClass(BookRepository::class),
     PA\UsesClass(AuthorType::class),
     PA\UsesClass(BookType::class),
@@ -30,7 +32,7 @@ use Symfony\Component\DomCrawler\Crawler;
     PA\Group('pages_book_new'),
     PA\Group('book')
 ]
-class NewTest extends WebTestCase
+class BookNewTest extends WebTestCase
 {
     // Traits :
     use GenerateString;

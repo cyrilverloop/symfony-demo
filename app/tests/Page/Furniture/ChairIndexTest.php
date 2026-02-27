@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Furniture;
 
-use App\Controller\Furniture\ChairController;
+use App\Controller\Furniture\ChairEditController;
+use App\Controller\Furniture\ChairNewController;
+use App\Controller\Furniture\ChairIndexController;
+use App\Controller\Furniture\ChairShowController;
 use App\Entity\Furniture\Chair;
 use App\Form\Furniture\ChairType;
 use App\Repository\Furniture\ChairRepository;
@@ -17,16 +20,19 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the chair index page.
  */
 #[
-    PA\CoversClass(ChairController::class),
+    PA\CoversClass(ChairIndexController::class),
     PA\CoversClass(ChairRepository::class),
     PA\UsesClass(Chair::class),
+    PA\UsesClass(ChairEditController::class),
+    PA\UsesClass(ChairNewController::class),
+    PA\UsesClass(ChairShowController::class),
     PA\UsesClass(ChairType::class),
     PA\Group('pages'),
     PA\Group('pages_chair'),
     PA\Group('pages_chair_index'),
     PA\Group('chair')
 ]
-final class IndexTest extends WebTestCase
+final class ChairIndexTest extends WebTestCase
 {
     // Traits :
     use ChairFixture;

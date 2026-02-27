@@ -2,65 +2,77 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Page\Furniture;
+namespace App\Tests\Page\Library;
 
-use App\Controller\Furniture\ChairController;
-use App\Entity\Furniture\Chair;
-use App\Form\Furniture\ChairType;
-use App\Repository\Furniture\ChairRepository;
-use App\Tests\Page\Furniture\ChairFixture;
+use App\Controller\Library\BookDeleteController;
+use App\Controller\Library\BookEditController;
+use App\Controller\Library\BookIndexController;
+use App\Controller\Library\BookShowController;
+use App\Document\Library\Author;
+use App\Document\Library\Book;
+use App\Form\Library\AuthorType;
+use App\Form\Library\BookType;
+use App\Repository\Library\BookRepository;
+use App\Tests\Page\Library\BookFixture;
 use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Test the chair show page.
+ * Test the book show page.
  */
 #[
-    PA\CoversClass(ChairController::class),
-    PA\UsesClass(Chair::class),
-    PA\UsesClass(ChairRepository::class),
-    PA\UsesClass(ChairType::class),
+    PA\CoversClass(BookDeleteController::class),
+    PA\CoversClass(BookShowController::class),
+    PA\UsesClass(Author::class),
+    PA\UsesClass(Book::class),
+    PA\UsesClass(BookEditController::class),
+    PA\UsesClass(BookIndexController::class),
+    PA\UsesClass(BookRepository::class),
+    PA\UsesClass(AuthorType::class),
+    PA\UsesClass(BookType::class),
     PA\Group('pages'),
-    PA\Group('pages_chair'),
-    PA\Group('pages_chair_show'),
-    PA\Group('chair')
+    PA\Group('pages_book'),
+    PA\Group('pages_book_show'),
+    PA\Group('book')
 ]
-class ShowTest extends WebTestCase
+class BookShowTest extends WebTestCase
 {
     // Traits :
-    use ChairFixture;
+    use BookFixture;
 
 
     // Methods :
 
     /**
-     * Tests that chair can be shown.
+     * Tests that book can be shown.
      */
-    public function testCanShowChair(): void
+    public function testCanShowBook(): void
     {
         $client = static::createClient();
 
-        $this->addChairFixture();
+        $bookId = $this->addBookFixture();
 
-        $crawler = $client->request('GET', '/chairs/1');
+        $crawler = $client->request('GET', '/books/' . $bookId);
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextSame('h1', 'Chair');
+        $this->assertSelectorTextSame('h1', 'Book');
 
         self::assertCount(
             1,
             $crawler->filter('.card'),
-            'There must be 1 card on the chair\'s page.'
+            'There must be 1 card on the book\'s page.'
         );
         self::assertSame(
-            'test-name',
+            'test-title',
             $crawler->filter('h5.card-header')->text(),
-            'The name of the chair must be in a <h5>.'
+            'The title of the book must be in a <h5>.'
         );
+
+        $cardContent = $crawler->filter('.card-text');
+
         self::assertSame(
-            'test-description',
-            $crawler->filter('p.card-text')->text(),
-            'The description of the chair must be in a <p>.'
+            'From test-firstname test-lastname',
+            $cardContent->text()
         );
 
         $links = $crawler->filter('.card-body a');
@@ -86,26 +98,30 @@ class ShowTest extends WebTestCase
             $deleteButton->attr('class'),
             'The delete button must have a "btn-primary" class.'
         );
+
+        $this->removeBookFixture();
     }
 
 
     /**
      * Tests that the page can be browsed
-     * back to the chair index page.
+     * back to the book index page.
      */
-    #[PA\Depends('testCanShowChair')]
+    #[PA\Depends('testCanShowBook')]
     public function testCanBrowseBackToTheIndex(): void
     {
         $client = static::createClient();
 
-        $this->addChairFixture();
+        $bookId = $this->addBookFixture();
 
-        $crawler = $client->request('GET', '/chairs/1');
+        $crawler = $client->request('GET', '/books/' . $bookId);
         $backLink = $crawler->filter('.card-body a')->eq(0);
 
         $client->click($backLink->link());
 
         $this->assertResponseIsSuccessful();
+
+        $this->removeBookFixture();
     }
 
 
@@ -113,42 +129,46 @@ class ShowTest extends WebTestCase
      * Tests that the page can browsed
      * from the show to the edit page.
      */
-    #[PA\Depends('testCanShowChair')]
+    #[PA\Depends('testCanShowBook')]
     public function testCanBrowseFromShowToEdit(): void
     {
         $client = static::createClient();
 
-        $this->addChairFixture();
+        $bookId = $this->addBookFixture();
 
-        $crawler = $client->request('GET', '/chairs/1');
+        $crawler = $client->request('GET', '/books/' . $bookId);
         $editLink = $crawler->filter('.card-body a')->eq(1);
 
         $client->click($editLink->link());
 
         $this->assertResponseIsSuccessful();
+
+        $this->removeBookFixture();
     }
 
 
     /**
-     * Tests that a chair can be deleted.
+     * Tests that a book can be deleted.
      */
-    #[PA\Depends('testCanShowChair')]
-    public function testCanDeleteChair(): void
+    #[PA\Depends('testCanShowBook')]
+    public function testCanDeleteBook(): void
     {
         $client = static::createClient();
 
-        $this->addChairFixture();
+        $bookId = $this->addBookFixture();
 
-        $crawler = $client->request('GET', '/chairs/1');
+        $crawler = $client->request('GET', '/books/' . $bookId);
         $form = $crawler->filter('#delete_product_form')->form();
         $client->submit($form);
         $client->followRedirect();
 
         $this->assertResponseIsSuccessful();
 
-        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
-        $deletedChair = $entityManager->find(Chair::class, 1);
+        $documentManager = static::$kernel->getContainer()->get('doctrine_mongodb')->getManager();
+        $deletedBook = $documentManager->find(Book::class, $bookId);
 
-        self::assertNull($deletedChair, 'The Chair has not been deleted.');
+        self::assertNull($deletedBook, 'The Book has not been deleted.');
+
+        $this->removeBookFixture();
     }
 }

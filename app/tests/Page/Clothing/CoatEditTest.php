@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Clothing;
 
-use App\Controller\Clothing\CoatController;
+use App\Controller\Clothing\CoatDeleteController;
+use App\Controller\Clothing\CoatEditController;
+use App\Controller\Clothing\CoatIndexController;
 use App\Entity\Clothing\Coat;
 use App\Form\Clothing\CoatType;
 use App\Repository\Clothing\CoatRepository;
@@ -18,8 +20,10 @@ use Symfony\Component\DomCrawler\Crawler;
  * Test the coat edit page.
  */
 #[
-    PA\CoversClass(CoatController::class),
+    PA\CoversClass(CoatDeleteController::class),
+    PA\CoversClass(CoatEditController::class),
     PA\UsesClass(Coat::class),
+    PA\UsesClass(CoatIndexController::class),
     PA\UsesClass(CoatRepository::class),
     PA\UsesClass(CoatType::class),
     PA\Group('pages'),
@@ -27,7 +31,7 @@ use Symfony\Component\DomCrawler\Crawler;
     PA\Group('pages_coat_edit'),
     PA\Group('coat')
 ]
-class EditTest extends WebTestCase
+class CoatEditTest extends WebTestCase
 {
     // Traits :
     use GenerateString;

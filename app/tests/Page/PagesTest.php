@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Page;
 
-use App\Controller\Clothing\CoatController;
+use App\Controller\Clothing\CoatIndexController;
 use App\Repository\Clothing\CoatRepository;
-use App\Controller\Furniture\ChairController;
+use App\Controller\Furniture\ChairIndexController;
 use App\Repository\Furniture\ChairRepository;
-use App\Controller\Library\BookController;
+use App\Controller\Library\BookIndexController;
 use App\Repository\Library\BookRepository;
 use App\Controller\PagesController;
 use PHPUnit\Framework\Attributes as PA;
@@ -19,11 +19,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 #[
     PA\CoversClass(PagesController::class),
-    PA\UsesClass(BookController::class),
+    PA\UsesClass(BookIndexController::class),
     PA\UsesClass(BookRepository::class),
-    PA\UsesClass(CoatController::class),
+    PA\UsesClass(CoatIndexController::class),
     PA\UsesClass(CoatRepository::class),
-    PA\UsesClass(ChairController::class),
+    PA\UsesClass(ChairIndexController::class),
     PA\UsesClass(ChairRepository::class),
     PA\Group('pages'),
     PA\Group('pages_home')

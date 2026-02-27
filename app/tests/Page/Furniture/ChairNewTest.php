@@ -4,30 +4,31 @@ declare(strict_types=1);
 
 namespace App\Tests\Page\Furniture;
 
-use App\Controller\Furniture\ChairController;
+use App\Controller\Furniture\ChairIndexController;
+use App\Controller\Furniture\ChairNewController;
 use App\Entity\Furniture\Chair;
 use App\Form\Furniture\ChairType;
 use App\Repository\Furniture\ChairRepository;
-use App\Tests\Page\Furniture\ChairFixture;
 use App\Tests\Page\Product\GenerateString;
 use PHPUnit\Framework\Attributes as PA;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Test the chair edit page.
+ * Test the chair index page.
  */
 #[
-    PA\CoversClass(ChairController::class),
+    PA\CoversClass(ChairNewController::class),
     PA\UsesClass(Chair::class),
+    PA\UsesClass(ChairIndexController::class),
     PA\UsesClass(ChairRepository::class),
     PA\UsesClass(ChairType::class),
     PA\Group('pages'),
     PA\Group('pages_chair'),
-    PA\Group('pages_chair_edit'),
+    PA\Group('pages_chair_new'),
     PA\Group('chair')
 ]
-class EditTest extends WebTestCase
+class ChairNewTest extends WebTestCase
 {
     // Traits :
     use GenerateString;
@@ -37,22 +38,22 @@ class EditTest extends WebTestCase
     // Methods :
 
     /**
-     * Tests that a chair can be edited.
+     * Tests that the page to create a new chair
+     * can be displayed.
      */
-    public function testCanDisplayChairEdit(): void
+    public function testCanDisplayNewChairPage(): void
     {
         $client = static::createClient();
-        $this->addChairFixture();
-        $crawler = $client->request('GET', '/chairs/1/edit');
+        $crawler = $client->request('GET', '/chairs/new');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextSame('h1', 'Edit chair', 'There must be a <h1> for chairs.');
+        $this->assertSelectorTextSame('h1', 'Create new chair', 'There must be a <h1> for new chairs.');
 
         $form = $crawler->filter('form[name="chair"]');
         self::assertCount(1, $form, 'There must be a form to create chairs.');
         $this->assertHasAnInputForName($form->filter('#chair_name'));
         $this->assertHasAnInputForDescription($form->filter('#chair_description'));
-        self::assertNotEmpty($form->filter('#chair__token')->attr('value'), 'The create form must have a token.');
+        self::assertNotEmpty($form->filter('#chair__token')->attr('value'), 'The form must have a token.');
     }
 
     /**
@@ -66,10 +67,9 @@ class EditTest extends WebTestCase
         self::assertSame('^.+$', $nameInput->attr('pattern'), 'The name input pattern must be "^.+$".');
         self::assertSame('The name', $nameInput->attr('placeholder'), 'The name input placeholder must be "The name".');
         self::assertSame('required', $nameInput->attr('required'), 'The name input must be required.');
-        self::assertSame('30', $nameInput->attr('size'), 'The name input size must be 30.');
+        self::assertSame("30", $nameInput->attr('size'), 'The name input size must be 30.');
         self::assertSame('The name of the product.', $nameInput->attr('title'), 'The name input title must be "The name of the product.".');
         self::assertSame('text', $nameInput->attr('type'), 'The name input must be of type text.');
-        self::assertSame('test-name', $nameInput->attr('value'), 'The name input must have "test-name" as a value.');
     }
 
     /**
@@ -82,42 +82,23 @@ class EditTest extends WebTestCase
         self::assertSame('chair[description]', $nameInput->attr('name'), 'The name input must be named "chair[description]".');
         self::assertSame('A description', $nameInput->attr('placeholder'), 'The name input placeholder must be "A description".');
         self::assertSame('The description of the product.', $nameInput->attr('title'), 'The name input title must be "The description of the product.".');
-        self::assertSame('test-description', $nameInput->text(), 'The description input must have "test-description" as a value.');
     }
 
 
     /**
-     * Tests that the page can be browsed
-     * back to the chair index page.
+     * Tests that new chairs can be created.
      */
-    #[PA\Depends('testCanDisplayChairEdit')]
-    public function testCanBrowseBackToTheIndex(): void
+    #[PA\Depends('testCanDisplayNewChairPage')]
+    public function testCanCreateNewChair(): void
     {
         $client = static::createClient();
-        $this->addChairFixture();
-        $crawler = $client->request('GET', '/chairs/1/edit');
-        $backLink = $crawler->filter('a.btn-secondary')->eq(0);
+        $crawler = $client->request('GET', '/chairs/new');
 
-        $client->click($backLink->link());
-
-        $this->assertResponseIsSuccessful();
-    }
-
-
-    /**
-     * Tests that a chair can be updated.
-     */
-    #[PA\Depends('testCanDisplayChairEdit')]
-    public function testCanUpdateAChair(): void
-    {
-        $client = static::createClient();
-        $this->addChairFixture();
-        $crawler = $client->request('GET', '/chairs/1/edit');
         $form = $crawler->filter('#chair_submit')->form();
 
         $chairDatas = [
-            'chair[name]' => 'test-update-name',
-            'chair[description]' => 'test-update-description'
+            'chair[name]' => 'test-new-name',
+            'chair[description]' => 'test-new-description'
         ];
 
         $client->submit($form, $chairDatas);
@@ -128,17 +109,16 @@ class EditTest extends WebTestCase
 
         $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
         $chair = $entityManager->find(Chair::class, 1);
-        $entityManager->refresh($chair);
 
         self::assertSame(
-            'test-update-name',
+            'test-new-name',
             $chair->getName(),
-            'The new chair must be named "test-update-name".'
+            'The new chair must be named "test-new-name".'
         );
         self::assertSame(
-            'test-update-description',
+            'test-new-description',
             $chair->getDescription(),
-            'The new chair must be named "test-update-description".'
+            'The new chair must be named "test-new-description".'
         );
     }
 
@@ -150,8 +130,8 @@ class EditTest extends WebTestCase
     public static function getInvalidChairDatas(): array
     {
         $chairDatas = [
-            'chair[name]' => 'test-update-name',
-            'chair[description]' => 'test-update-description'
+            'chair[name]' => 'test-new-name',
+            'chair[description]' => 'test-new-description'
         ];
 
         $emptyStringName = $chairDatas;
@@ -161,7 +141,7 @@ class EditTest extends WebTestCase
         $nameTooLong['chair[name]'] = self::generateLongString(51);
 
         $descriptionTooLong = $chairDatas;
-        $descriptionTooLong['chair[description]'] = self::generateLongString(301);
+        $descriptionTooLong['chair[name]'] = self::generateLongString(301);
 
         return [
             'the name is an empty string.' => [$emptyStringName],
@@ -171,22 +151,22 @@ class EditTest extends WebTestCase
     }
 
     /**
-     * Tests that chairs can not be updated
+     * Tests that new chairs can not be created
      * with invalid chair datas.
      * @param mixed[] $chairDatas invalid chair datas.
      */
     #[
         PA\DataProvider('getInvalidChairDatas'),
-        PA\Depends('testCanDisplayChairEdit'),
-        PA\TestDox('Can not update a chair when $_dataName')
+        PA\Depends('testCanDisplayNewChairPage'),
+        PA\TestDox('Can not create new chair when $_dataName')
     ]
-    public function testCanNotUpdateAChair(array $chairDatas): void
+    public function testCanNotCreateNewChair(array $chairDatas): void
     {
         $client = static::createClient();
-        $this->addChairFixture();
-        $crawler = $client->request('GET', '/chairs/1/edit');
+        $crawler = $client->request('GET', '/chairs/new');
 
         $form = $crawler->filter('#chair_submit')->form();
+
         $notSavedCrawler = $client->submit($form, $chairDatas);
 
         $this->assertResponseIsSuccessful();
@@ -195,41 +175,25 @@ class EditTest extends WebTestCase
 
         self::assertCount(1, $errorMessage, 'There must be an error message.');
 
-        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
-        $chair = $entityManager->find(Chair::class, 1);
-        $entityManager->refresh($chair);
+        self::bootKernel();
+        $chairRepository = static::getContainer()->get(ChairRepository::class);
+        $chairs = $chairRepository->findAll();
 
-        self::assertNotEquals(
-            $chairDatas['chair[name]'],
-            $chair->getName(),
-            'The chair name must not be updated.'
-        );
-        self::assertNotEquals(
-            $chairDatas['chair[description]'],
-            $chair->getDescription(),
-            'The chair description must not be updated.'
-        );
+        self::assertEmpty($chairs, 'The chair must not be added.');
     }
 
 
     /**
      * Tests that a chair name can be unique.
      */
-    #[PA\Depends('testCanDisplayChairEdit')]
+    #[PA\Depends('testCanDisplayNewChairPage')]
     public function testAChairNameCanBeUnique(): void
     {
         $client = static::createClient();
         $this->addChairFixture();
+        $crawler = $client->request('GET', '/chairs/new');
 
-        $chair = new Chair('test-name2', 'test-description2');
-
-        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
-        $entityManager->persist($chair);
-        $entityManager->flush();
-
-        $crawler = $client->request('GET', '/chairs/2/edit');
-
-        $form = $crawler->filter('form[name="chair"]')->form();
+        $form = $crawler->filter('#chair_submit')->form();
 
         $chairDatas = [
             'chair[name]' => 'test-name',
@@ -243,29 +207,11 @@ class EditTest extends WebTestCase
         $errorMessage = $notSavedCrawler->filter('div.invalid-feedback');
 
         self::assertCount(1, $errorMessage, 'There must be an error message.');
-    }
 
+        self::bootKernel();
+        $chairRepository = static::getContainer()->get(ChairRepository::class);
+        $chairs = $chairRepository->findAll();
 
-    /**
-     * Tests that a chair can be deleted.
-     */
-    #[PA\Depends('testCanDisplayChairEdit')]
-    public function testCanDeleteChair(): void
-    {
-        $client = static::createClient();
-
-        $this->addChairFixture();
-
-        $crawler = $client->request('GET', '/chairs/1/edit');
-        $form = $crawler->filter('#delete_product_form')->form();
-        $client->submit($form);
-        $client->followRedirect();
-
-        $this->assertResponseIsSuccessful();
-
-        $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
-        $deletedChair = $entityManager->find(Chair::class, 1);
-
-        self::assertNull($deletedChair, 'The Chair has not been deleted.');
+        self::assertCount(1, $chairs, 'The second chair must not be added.');
     }
 }

@@ -23,7 +23,7 @@ This demo uses Docker images based on :
 2. `postgres` for the PostgreSQL database;
 3. `mongodb`,` for the MongoDB database;
 4. `httpd:alpine` for the web server;
-5. `php:8.5.0-fpm-alpine` for php files;
+5. `php:8.5-fpm-alpine` for php files;
 6. `alpine/openssl` to generate a TLS certificate.
 
 The `app` (php) container depends on the `mariadb`, `postgres`, `mongodb` and `httpd` containers.
