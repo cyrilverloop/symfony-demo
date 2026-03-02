@@ -21,7 +21,7 @@ user@host projects$ cd symfony-demo
 This demo uses Docker images based on :
 1. `mariadb` for the MariaDB database;
 2. `postgres` for the PostgreSQL database;
-3. `mongodb`,` for the MongoDB database;
+3. `mongodb` for the MongoDB database;
 4. `httpd:alpine` for the web server;
 5. `php:8.5-fpm-alpine` for php files;
 6. `alpine/openssl` to generate a TLS certificate.
