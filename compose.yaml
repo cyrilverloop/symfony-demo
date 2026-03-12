@@ -27,7 +27,7 @@ services:
         ports:
             - "5432:5432"
         volumes:
-            - ./postgres/datas/:/var/lib/postgresql/data
+            - ./postgres/datas/:/var/lib/postgresql/
 
     mongodb:
         env_file: ./.env
