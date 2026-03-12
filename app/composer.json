@@ -50,7 +50,7 @@
         "symfony/css-selector": "8.0.*",
         "symfony/debug-bundle": "8.0.*",
         "symfony/maker-bundle": "^1.66.0",
-        "symfony/phpunit-bridge": "^7.4.3",
+        "symfony/phpunit-bridge": "^7.4.7",
         "symfony/stopwatch": "8.0.*",
         "symfony/var-dumper": "8.0.*",
         "symfony/web-profiler-bundle": "8.0.*"
