@@ -12,7 +12,7 @@ COPY --from=ghcr.io/php/pie:bin /pie /usr/bin/pie
 
 # Adding XDEBUG :
 RUN apk add --no-cache php85-dev g++ make autoconf libtool bison re2c $PHPIZE_DEPS \
-    && pie install xdebug/xdebug:3.5.0 \
+    && pie install xdebug/xdebug:3.5 \
     && apk del --purge $PHPIZE_DEPS
 
 # Adding MongoDB :
