@@ -13,7 +13,7 @@
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/mongodb-odm-bundle": "^5.6",
         "doctrine/orm": "^3.6.2",
-        "phpdocumentor/reflection-docblock": "^5.6.6",
+        "phpdocumentor/reflection-docblock": "^5.6.7",
         "phpstan/phpdoc-parser": "^2.3.2",
         "symfony/asset": "8.0.*",
         "symfony/asset-mapper": "8.0.*",
@@ -41,15 +41,15 @@
         "symfony/validator": "8.0.*",
         "symfony/web-link": "8.0.*",
         "symfony/yaml": "8.0.*",
-        "twig/extra-bundle": "^3.23.0",
-        "twig/twig": "^3.23.0"
+        "twig/extra-bundle": "^3.24.0",
+        "twig/twig": "^3.24.0"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.6.0",
         "symfony/browser-kit": "8.0.*",
         "symfony/css-selector": "8.0.*",
         "symfony/debug-bundle": "8.0.*",
-        "symfony/maker-bundle": "^1.66.0",
+        "symfony/maker-bundle": "^1.67.0",
         "symfony/phpunit-bridge": "^7.4.7",
         "symfony/stopwatch": "8.0.*",
         "symfony/var-dumper": "8.0.*",
