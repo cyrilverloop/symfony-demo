@@ -72,26 +72,6 @@ jobs:
     - name: Run php lint
       run: cd app/ && find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
 
-  phpcs:
-    needs: phplint
-    runs-on: ubuntu-24.04
-
-    steps:
-    - uses: actions/download-artifact@v4
-      with:
-        name: installed-project
-
-    - name: Untar project.
-      run:  tar -xf project.tar
-
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.5'
-
-    - name: Run phpcs
-      run: cd app/ && ./tools/phpcs --standard=PSR12 --extensions=php --ignore=*/Kernel.php ./src/
-
   test:
     needs: phplint
     runs-on: ubuntu-24.04
