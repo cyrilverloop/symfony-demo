@@ -136,12 +136,12 @@ class CoatEditTest extends WebTestCase
 
         self::assertSame(
             'test-update-name',
-            $coat->getName(),
+            $coat->name,
             'The new coat must be named "test-update-name".'
         );
         self::assertSame(
             'test-update-description',
-            $coat->getDescription(),
+            $coat->description,
             'The new coat must be named "test-update-description".'
         );
     }
@@ -205,12 +205,12 @@ class CoatEditTest extends WebTestCase
 
         self::assertNotEquals(
             $coatDatas['coat[name]'],
-            $coat->getName(),
+            $coat->name,
             'The coat name must not be updated.'
         );
         self::assertNotEquals(
             $coatDatas['coat[description]'],
-            $coat->getDescription(),
+            $coat->description,
             'The coat description must not be updated.'
         );
     }

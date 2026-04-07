@@ -28,7 +28,7 @@ trait BookFixture
         $documentManager->persist($book);
         $documentManager->flush();
 
-        return $book->getId();
+        return $book->id;
     }
 
     /**

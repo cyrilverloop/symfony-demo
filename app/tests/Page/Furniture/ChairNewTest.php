@@ -112,12 +112,12 @@ class ChairNewTest extends WebTestCase
 
         self::assertSame(
             'test-new-name',
-            $chair->getName(),
+            $chair->name,
             'The new chair must be named "test-new-name".'
         );
         self::assertSame(
             'test-new-description',
-            $chair->getDescription(),
+            $chair->description,
             'The new chair must be named "test-new-description".'
         );
     }

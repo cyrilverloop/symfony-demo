@@ -136,12 +136,12 @@ class ChairEditTest extends WebTestCase
 
         self::assertSame(
             'test-update-name',
-            $chair->getName(),
+            $chair->name,
             'The new chair must be named "test-update-name".'
         );
         self::assertSame(
             'test-update-description',
-            $chair->getDescription(),
+            $chair->description,
             'The new chair must be named "test-update-description".'
         );
     }
@@ -205,12 +205,12 @@ class ChairEditTest extends WebTestCase
 
         self::assertNotEquals(
             $chairDatas['chair[name]'],
-            $chair->getName(),
+            $chair->name,
             'The chair name must not be updated.'
         );
         self::assertNotEquals(
             $chairDatas['chair[description]'],
-            $chair->getDescription(),
+            $chair->description,
             'The chair description must not be updated.'
         );
     }

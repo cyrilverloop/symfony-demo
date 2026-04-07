@@ -142,19 +142,19 @@ class BookNewTest extends WebTestCase
 
         self::assertSame(
             'test-new-title',
-            $books[0]->getTitle(),
+            $books[0]->title,
             'The new book must be named "test-new-title".'
         );
 
         self::assertSame(
             'test-new-author-firstname',
-            $books[0]->getAuthor()->getFirstname(),
+            $books[0]->author->firstname,
             'The new author first name must be "test-new-author-firstname".'
         );
 
         self::assertSame(
             'test-new-author-lastname',
-            $books[0]->getAuthor()->getLastname(),
+            $books[0]->author->lastname,
             'The new author last name must be "test-new-author-lastname".'
         );
 

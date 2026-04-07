@@ -29,7 +29,7 @@ final class AuthorTest extends TestCase
     {
         $author = new Author();
 
-        self::assertNull($author->getId());
+        self::assertNull($author->id);
     }
 
     /**
@@ -38,11 +38,11 @@ final class AuthorTest extends TestCase
     public function testCanSetAndGetFirstname(): void
     {
         $author = new Author();
-        $author->setFirstname('test-firstname');
+        $author->firstname = 'test-firstname';
 
         self::assertSame(
             'test-firstname',
-            $author->getFirstname(),
+            $author->firstname,
             'The returned firstname is not the one that has been defined.'
         );
     }
@@ -53,11 +53,11 @@ final class AuthorTest extends TestCase
     public function testCanSetAndGetLastname(): void
     {
         $author = new Author();
-        $author->setLastname('test-lastname');
+        $author->lastname = 'test-lastname';
 
         self::assertSame(
             'test-lastname',
-            $author->getLastname(),
+            $author->lastname,
             'The returned lastname is not the one that has been defined.'
         );
     }

@@ -36,7 +36,7 @@ final class BookDeleteController extends AbstractController
     )]
     public function delete(Request $request, Book $book, DocumentManager $documentManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . (string)$book->getId(), (string)$request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . (string)$book->id, (string)$request->request->get('_token'))) {
             $documentManager->remove($book);
             $documentManager->flush();
         }

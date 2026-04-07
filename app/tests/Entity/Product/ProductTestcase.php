@@ -28,7 +28,7 @@ abstract class ProductTestcase extends TestCase
      */
     public function testCanInitialiseIdentifierToNull(): void
     {
-        self::assertNull($this->product->getId());
+        self::assertNull($this->product->id);
     }
 
     /**
@@ -36,11 +36,11 @@ abstract class ProductTestcase extends TestCase
      */
     public function testCanSetAndGetName(): void
     {
-        $this->product->setName('test-name');
+        $this->product->name = 'test-name';
 
         self::assertSame(
             'test-name',
-            $this->product->getName(),
+            $this->product->name,
             'The returned name is not the one that has been defined.'
         );
     }
@@ -50,11 +50,11 @@ abstract class ProductTestcase extends TestCase
      */
     public function testCanSetAndGetDescription(): void
     {
-        $this->product->setDescription('test-description');
+        $this->product->description = 'test-description';
 
         self::assertSame(
             'test-description',
-            $this->product->getDescription(),
+            $this->product->description,
             'The returned description is not the one that has been defined.'
         );
     }

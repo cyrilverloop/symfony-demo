@@ -167,19 +167,19 @@ class BookEditTest extends WebTestCase
 
         self::assertSame(
             'test-update-title',
-            $book->getTitle(),
+            $book->title,
             'The new book must be named "test-update-title".'
         );
 
         self::assertSame(
             'test-update-author-firstname',
-            $book->getAuthor()->getFirstname(),
+            $book->author->firstname,
             'The new author first name must be "test-update-author-firstname".'
         );
 
         self::assertSame(
             'test-update-author-lastname',
-            $book->getAuthor()->getLastname(),
+            $book->author->lastname,
             'The new author last name must be "test-update-author-lastname".'
         );
 

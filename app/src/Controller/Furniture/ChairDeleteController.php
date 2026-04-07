@@ -36,7 +36,7 @@ final class ChairDeleteController extends AbstractController
     )]
     public function delete(Request $request, Chair $chair, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . (int)$chair->getId(), (string)$request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . (int)$chair->id, (string)$request->request->get('_token'))) {
             $entityManager->remove($chair);
             $entityManager->flush();
         }

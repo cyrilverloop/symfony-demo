@@ -31,7 +31,7 @@ final class BookTest extends TestCase
     {
         $book = new Book();
 
-        self::assertNull($book->getId());
+        self::assertNull($book->id);
     }
 
     /**
@@ -40,11 +40,11 @@ final class BookTest extends TestCase
     public function testCanSetAndGetTitle(): void
     {
         $book = new Book();
-        $book->setTitle('test-title');
+        $book->title = 'test-title';
 
         self::assertSame(
             'test-title',
-            $book->getTitle(),
+            $book->title,
             'The returned title is not the one that has been defined.'
         );
     }
@@ -56,11 +56,11 @@ final class BookTest extends TestCase
     {
         $book = new Book();
         $author = new Author();
-        $book->setAuthor($author);
+        $book->author = $author;
 
         self::assertSame(
             $author,
-            $book->getAuthor(),
+            $book->author,
             'The returned author is not the one that has been defined.'
         );
     }

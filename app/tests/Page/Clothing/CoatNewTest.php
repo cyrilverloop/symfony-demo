@@ -112,12 +112,12 @@ class CoatNewTest extends WebTestCase
 
         self::assertSame(
             'test-new-name',
-            $coat->getName(),
+            $coat->name,
             'The new coat must be named "test-new-name".'
         );
         self::assertSame(
             'test-new-description',
-            $coat->getDescription(),
+            $coat->description,
             'The new coat must be named "test-new-description".'
         );
     }

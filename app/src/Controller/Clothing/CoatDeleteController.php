@@ -36,7 +36,7 @@ final class CoatDeleteController extends AbstractController
     )]
     public function delete(Request $request, Coat $coat, EntityManagerInterface $clothingEntityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . (int)$coat->getId(), (string)$request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . (int)$coat->id, (string)$request->request->get('_token'))) {
             $clothingEntityManager->remove($coat);
             $clothingEntityManager->flush();
         }
