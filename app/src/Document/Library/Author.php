@@ -31,11 +31,11 @@ final class Author
      * @param string $lastname the lastname.
      */
     public function __construct(
-       #[MongoDB\Field]
-       public string $firstname = '',
+        #[MongoDB\Field]
+        public string $firstname = '',
 
-       #[MongoDB\Field]
-       public string $lastname = ''
+        #[MongoDB\Field]
+        public string $lastname = ''
     ) {
         $this->id = null;
     }
