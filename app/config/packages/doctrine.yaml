@@ -19,11 +19,6 @@ doctrine:
                 naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
                 connection: default
                 mappings:
-                    CVDE:
-                        alias: CyrilVerloop
-                        dir: '%kernel.project_dir%/vendor/cyril-verloop/doctrine-entities/src'
-                        prefix: 'CyrilVerloop\DoctrineEntities'
-                        type: attribute
                     Furniture:
                         alias: Furniture
                         dir: '%kernel.project_dir%/src/Entity/Furniture'
@@ -44,11 +39,6 @@ doctrine:
                         alias: Clothing
                         dir: '%kernel.project_dir%/src/Entity/Clothing'
                         prefix: 'App\Entity\Clothing'
-                        type: attribute
-                    CVDE:
-                        alias: CyrilVerloop
-                        dir: '%kernel.project_dir%/vendor/cyril-verloop/doctrine-entities/src'
-                        prefix: 'CyrilVerloop\DoctrineEntities'
                         type: attribute
                     Product:
                         alias: Product

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c434a664f256457418e0d11351a8b9e5",
+    "content-hash": "2c9387feb7836e02d2375e48fd40bf8b",
     "packages": [
         {
             "name": "composer/semver",
@@ -82,53 +82,6 @@
                 }
             ],
             "time": "2025-08-20T19:15:30+00:00"
-        },
-        {
-            "name": "cyril-verloop/doctrine-entities",
-            "version": "10.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cyrilverloop/doctrine-entities.git",
-                "reference": "6277513c84ef01f39f4927155bfe28e4d09f22a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cyrilverloop/doctrine-entities/zipball/6277513c84ef01f39f4927155bfe28e4d09f22a6",
-                "reference": "6277513c84ef01f39f4927155bfe28e4d09f22a6",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "^3.2",
-                "php": ">=8.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CyrilVerloop\\DoctrineEntities\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cyril VERLOOP",
-                    "email": "cyril.verloop@webqard.fr"
-                }
-            ],
-            "description": "Some default doctrine entity/fields requiring PHP >=8.2 and Doctrine ORM 3.2.",
-            "support": {
-                "issues": "https://github.com/cyrilverloop/doctrine-entities/issues",
-                "source": "https://github.com/cyrilverloop/doctrine-entities/tree/10.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/cyrilverloop",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-01-16T16:28:00+00:00"
         },
         {
             "name": "cyril-verloop/templates-bundle",
