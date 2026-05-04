@@ -32,6 +32,7 @@ services:
     mongodb:
         env_file: ./.env
         environment:
+            GLIBC_TUNABLES=glibc.pthread.rseq: 1 # To fix Linux kernel 6.19+ incompatibility issue.
             MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USER}
             MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
         healthcheck:
