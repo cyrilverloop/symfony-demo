@@ -1,15 +1,18 @@
 {% set links = [
     {
-        'name': 'MariaDB',
-        'path': path('furniture_chair_index')
+        'name': 'Chairs',
+        'path': path('furniture_chair_index'),
+        'title': 'A MariaDB example.'
     },
     {
-        'name': 'PostgreSQL',
-        'path': path('clothing_coat_index')
+        'name': 'Coats',
+        'path': path('clothing_coat_index'),
+        'title': 'A PostgreSQL example.'
     },
     {
-        'name': 'MongoDB',
-        'path': path('library_book_index')
+        'name': 'Books',
+        'path': path('library_book_index'),
+        'title': 'A MongoDB example.'
     }
 ] %}
 
@@ -51,6 +54,7 @@
 
                             class="{{ linkClasses }}"
                             href="{{ link.path }}"
+                            title="{{ link.title }}"
                         >
                             {{ link.name }}
                         </a>
