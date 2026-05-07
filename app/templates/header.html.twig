@@ -1,0 +1,62 @@
+{% set links = [
+    {
+        'name': 'MariaDB',
+        'path': path('furniture_chair_index')
+    },
+    {
+        'name': 'PostgreSQL',
+        'path': path('clothing_coat_index')
+    },
+    {
+        'name': 'MongoDB',
+        'path': path('library_book_index')
+    }
+] %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary mx-auto fixed-top">
+    <div class="container">
+        <a
+            class="navbar-brand"
+            href="{{ path('home') }}"
+        >
+            {{ headTitleSiteName|trans }}
+        </a>
+
+        <button
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-bs-target="#navbarNav"
+            data-bs-toggle="collapse"
+            type="button"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
+            <ul class="navbar-nav">
+                {% for link in links %}
+                    <li class="nav-item">
+                        <a
+                            {% set linkClasses = 'nav-link' %}
+
+                            {% if currentPage is defined and currentPage == link.name %}
+                                {% set linkClasses = linkClasses ~ ' active' %}
+                                aria-current="page"
+                            {% endif %}
+
+                            class="{{ linkClasses }}"
+                            href="{{ link.path }}"
+                        >
+                            {{ link.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
