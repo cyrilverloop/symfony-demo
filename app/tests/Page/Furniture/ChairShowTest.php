@@ -69,7 +69,7 @@ class ChairShowTest extends WebTestCase
             'The description of the chair must be in a <p>.'
         );
 
-        $links = $crawler->filter('.card-body a');
+        $links = $crawler->filter('.card-footer a');
 
         self::assertSame('back to list', $links->eq(0)->text(), 'There must be a "back to list" link.');
         self::assertStringContainsString(
@@ -107,7 +107,7 @@ class ChairShowTest extends WebTestCase
         $this->addChairFixture();
 
         $crawler = $client->request('GET', '/chairs/1');
-        $backLink = $crawler->filter('.card-body a')->eq(0);
+        $backLink = $crawler->filter('.card-footer a')->eq(0);
 
         $client->click($backLink->link());
 
@@ -127,7 +127,7 @@ class ChairShowTest extends WebTestCase
         $this->addChairFixture();
 
         $crawler = $client->request('GET', '/chairs/1');
-        $editLink = $crawler->filter('.card-body a')->eq(1);
+        $editLink = $crawler->filter('.card-footer a')->eq(1);
 
         $client->click($editLink->link());
 

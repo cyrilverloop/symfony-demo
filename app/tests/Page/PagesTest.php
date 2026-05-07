@@ -55,7 +55,7 @@ class PagesTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/');
-        $client->clickLink('Show chairs');
+        $client->clickLink('Chairs');
 
         self::assertResponseIsSuccessful();
     }
@@ -70,7 +70,7 @@ class PagesTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/');
-        $client->clickLink('Show coats');
+        $client->clickLink('Coats');
 
         self::assertResponseIsSuccessful();
     }
@@ -85,7 +85,7 @@ class PagesTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/');
-        $client->clickLink('Show books');
+        $client->clickLink('Books');
 
         self::assertResponseIsSuccessful();
     }

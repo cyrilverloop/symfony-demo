@@ -75,7 +75,7 @@ class BookShowTest extends WebTestCase
             $cardContent->text()
         );
 
-        $links = $crawler->filter('.card-body a');
+        $links = $crawler->filter('.card-footer a');
 
         self::assertSame('back to list', $links->eq(0)->text(), 'There must be a "back to list" link.');
         self::assertStringContainsString(
@@ -115,7 +115,7 @@ class BookShowTest extends WebTestCase
         $bookId = $this->addBookFixture();
 
         $crawler = $client->request('GET', '/books/' . $bookId);
-        $backLink = $crawler->filter('.card-body a')->eq(0);
+        $backLink = $crawler->filter('.card-footer a')->eq(0);
 
         $client->click($backLink->link());
 
@@ -137,7 +137,7 @@ class BookShowTest extends WebTestCase
         $bookId = $this->addBookFixture();
 
         $crawler = $client->request('GET', '/books/' . $bookId);
-        $editLink = $crawler->filter('.card-body a')->eq(1);
+        $editLink = $crawler->filter('.card-footer a')->eq(1);
 
         $client->click($editLink->link());
 
