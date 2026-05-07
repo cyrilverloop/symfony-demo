@@ -10,24 +10,70 @@
 
 {% block main %}
     <div class="container p-5 bg-light">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Symfony Demo!</h1>
+        <div class="container-fluid">
+            <h1 class="fw-bold">Symfony Demo!</h1>
 
-            <p class="col-md-8 fs-4">
+            <p class="col-md-8 mb-0 fs-4">
                 This is a simple Symfony demo using PHP 8.5, Symfony 8.0, AssetMapper and Bootstrap 5.3.
             </p>
+        </div>
+    </div>
 
-            <hr class="my-4" />
+    <div class="container px-0">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-3">
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <h5 class="card-header">MariaDB</h5>
 
-            <p class="col-md-8 fs-5">
-                Click the buttons bellow to see CRUD examples using :
-            </p>
+                    <div class="card-body">A MariaDB CRUD example.</div>
 
-            <a class="btn btn-primary btn-lg" href="{{ path('furniture_chair_index') }}">MariaDB</a>
+                    <div class="card-footer text-center">
+                        <a
+                            class="btn btn-primary btn-lg"
+                            href="{{ path('furniture_chair_index') }}"
+                            title="A MariaDB example."
+                        >
+                            Chairs
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <a class="btn btn-primary btn-lg" href="{{ path('clothing_coat_index') }}">PostgreSQL</a>
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <h5 class="card-header">PostgreSQL</h5>
 
-            <a class="btn btn-primary btn-lg" href="{{ path('library_book_index') }}">MongoDB</a>
+                    <div class="card-body">A PostgreSQL CRUD example.</div>
+
+                    <div class="card-footer text-center">
+                        <a
+                            class="btn btn-primary btn-lg"
+                            href="{{ path('clothing_coat_index') }}"
+                            title="A PostgreSQL example."
+                        >
+                            Coats
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <h5 class="card-header">MongoDB</h5>
+
+                    <div class="card-body">A MongoDB CRUD example.</div>
+
+                    <div class="card-footer text-center">
+                        <a
+                            class="btn btn-primary btn-lg"
+                            href="{{ path('library_book_index') }}"
+                            title="A MongoDB example."
+                        >
+                            Books
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
