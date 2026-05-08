@@ -11,7 +11,7 @@
         "doctrine/doctrine-bundle": "^3.2.2",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/mongodb-odm-bundle": "^5.6",
-        "doctrine/orm": "^3.6.3",
+        "doctrine/orm": "^3.6.4",
         "phpdocumentor/reflection-docblock": "^5.6.7",
         "phpstan/phpdoc-parser": "^2.3.2",
         "symfony/asset": "8.0.*",
