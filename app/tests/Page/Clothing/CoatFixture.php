@@ -19,7 +19,11 @@ trait CoatFixture
      */
     public function addCoatFixture(): void
     {
-        $coat = new Coat('test-name', 'test-description');
+        $coat = new Coat(
+            'test-name',
+            'test-description',
+            5
+        );
 
         $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager('clothing');
         $entityManager->persist($coat);

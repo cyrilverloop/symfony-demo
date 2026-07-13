@@ -53,6 +53,7 @@ class CoatNewTest extends WebTestCase
         self::assertCount(1, $form, 'There must be a form to create coats.');
         $this->assertHasAnInputForName($form->filter('#coat_name'));
         $this->assertHasAnInputForDescription($form->filter('#coat_description'));
+        $this->assertHasAnInputForPrice($form->filter('#coat_price'));
         self::assertNotEmpty($form->filter('#coat__token')->attr('value'), 'The form must have a token.');
     }
 
@@ -84,6 +85,19 @@ class CoatNewTest extends WebTestCase
         self::assertSame('The description of the product.', $nameInput->attr('title'), 'The name input title must be "The description of the product.".');
     }
 
+    /**
+     * The assertions for the input of the price.
+     * @param \Symfony\Component\DomCrawler\Crawler $priceInput the crawler.
+     */
+    private function assertHasAnInputForPrice(Crawler $priceInput): void
+    {
+        self::assertSame('number', $priceInput->attr('type'), 'The price input maxlength must be 300.');
+        self::assertSame('coat[price]', $priceInput->attr('name'), 'The price input must be named "coat[price]".');
+        self::assertSame('1', $priceInput->attr('placeholder'), 'The price input placeholder must be "1".');
+        self::assertSame('The price of the product.', $priceInput->attr('title'), 'The price input title must be "The price of the product.".');
+        self::assertNull($priceInput->attr('value'), 'The price input must have null as a value.');
+    }
+
 
     /**
      * Tests that new coats can be created.
@@ -98,7 +112,8 @@ class CoatNewTest extends WebTestCase
 
         $coatDatas = [
             'coat[name]' => 'test-new-name',
-            'coat[description]' => 'test-new-description'
+            'coat[description]' => 'test-new-description',
+            'coat[price]' => 10
         ];
 
         $client->submit($form, $coatDatas);
@@ -120,6 +135,11 @@ class CoatNewTest extends WebTestCase
             $coat->description,
             'The new coat must be named "test-new-description".'
         );
+        self::assertSame(
+            10,
+            $coat->price,
+            'The price of the new coat must be "test-new-description".'
+        );
     }
 
 
@@ -131,7 +151,8 @@ class CoatNewTest extends WebTestCase
     {
         $coatDatas = [
             'coat[name]' => 'test-new-name',
-            'coat[description]' => 'test-new-description'
+            'coat[description]' => 'test-new-description',
+            'coat[price]' => 5
         ];
 
         $emptyStringName = $coatDatas;
@@ -143,10 +164,14 @@ class CoatNewTest extends WebTestCase
         $descriptionTooLong = $coatDatas;
         $descriptionTooLong['coat[name]'] = self::generateLongString(301);
 
+        $priceToLow = $coatDatas;
+        $priceToLow['coat[price]'] = -1;
+
         return [
             'the name is an empty string.' => [$emptyStringName],
             'the name is too long (>50 chars).' => [$nameTooLong],
-            'the description is too long (>300 chars).' => [$descriptionTooLong]
+            'the description is too long (>300 chars).' => [$descriptionTooLong],
+            'the price is too low (<0).' => [$priceToLow]
         ];
     }
 

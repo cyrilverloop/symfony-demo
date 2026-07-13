@@ -20,6 +20,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Price</th>
                     <th scope="col">actions</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <td>{{ chair.id }}</td>
                     <td>{{ chair.name }}</td>
                     <td>{{ chair.description }}</td>
+                    <td>{{ chair.price }}</td>
                     <td>
                         <a href="{{ path('furniture_chair_show', {'id': chair.id}) }}"
                             class="btn btn-primary">

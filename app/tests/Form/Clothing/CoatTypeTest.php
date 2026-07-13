@@ -44,6 +44,7 @@ final class CoatTypeTest extends ProductTypeTestcase
 
         $this->assertHasNameInput($builder);
         $this->assertHasDescriptionTextarea($builder);
+        $this->assertHasPriceInput($builder);
         $this->assertHasSubmitButton($builder);
     }
 }

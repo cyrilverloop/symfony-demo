@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Form\Product;
 
 use App\Form\Product\ProductType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -56,6 +57,8 @@ abstract class ProductTypeTestcase extends TypeTestCase
         self::assertSame('', $options['empty_data'], 'The name field empty_data must be an empty string.');
         self::assertArrayHasKey('label', $options, 'The name field must have a label option.');
         self::assertSame('form.name.label', $options['label'], 'The name field label must be "form.name.label".');
+        self::assertArrayHasKey('required', $options, 'The name field must have a required option.');
+        self::assertTrue($options['required'], 'The name field must be required.');
     }
 
     /**
@@ -83,6 +86,31 @@ abstract class ProductTypeTestcase extends TypeTestCase
         self::assertSame('form.description.label', $options['label'], 'The description field label must be "form.description.label".');
         self::assertArrayHasKey('required', $options, 'The description field must have a required option.');
         self::assertFalse($options['required'], 'The description field must not be required.');
+    }
+
+    /**
+     * Asserts that the description textarea is present.
+     * @param \Symfony\Component\Form\FormBuilder $builder the form builder.
+     */
+    protected function assertHasPriceInput(FormBuilder $builder): void
+    {
+        $field = $builder->get('price');
+        $fieldClass = get_class($field->getType()->getInnerType());
+
+        self::assertSame('price', $field->getName(), 'The price field must named "price".');
+        self::assertSame(IntegerType::class, $fieldClass, 'The price field must be of type "' . IntegerType::class . '".');
+
+        $options = $field->getOptions();
+
+        self::assertArrayHasKey('attr', $options, 'The price field must have an attr option.');
+        self::assertArrayHasKey('placeholder', $options['attr'], 'The price field must have a placeholder.');
+        self::assertSame('form.price.placeholder', $options['attr']['placeholder'], 'The price field placeholder must be "form.price.placeholder".');
+        self::assertArrayHasKey('title', $options['attr'], 'The price field must have a title.');
+        self::assertSame('form.price.title', $options['attr']['title'], 'The price field title must be "form.price.title".');
+        self::assertArrayHasKey('label', $options, 'The price field must have a label option.');
+        self::assertSame('form.price.label', $options['label'], 'The price field label must be "form.price.label".');
+        self::assertArrayHasKey('required', $options, 'The price field must have a required option.');
+        self::assertFalse($options['required'], 'The price field must not be required.');
     }
 
     /**

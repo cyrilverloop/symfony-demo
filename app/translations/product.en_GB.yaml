@@ -7,5 +7,9 @@ form:
         label: Name
         placeholder: The name
         title: The name of the product.
+    price:
+        label: Price
+        placeholder: 1
+        title: The price of the product.
     submit:
         value: Save

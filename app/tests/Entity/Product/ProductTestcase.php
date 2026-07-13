@@ -58,4 +58,18 @@ abstract class ProductTestcase extends TestCase
             'The returned description is not the one that has been defined.'
         );
     }
+
+    /**
+     * Test that the description can be accessed.
+     */
+    public function testCanSetAndGetPrice(): void
+    {
+        $this->product->price = 5;
+
+        self::assertSame(
+            5,
+            $this->product->price,
+            'The returned price is not the one that has been defined.'
+        );
+    }
 }

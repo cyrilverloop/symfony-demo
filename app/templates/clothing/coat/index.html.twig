@@ -20,6 +20,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Price</th>
                     <th scope="col">actions</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <td>{{ coat.id }}</td>
                     <td>{{ coat.name }}</td>
                     <td>{{ coat.description }}</td>
+                    <td>{{ coat.price }}</td>
                     <td>
                         <a href="{{ path('clothing_coat_show', {'id': coat.id}) }}"
                             class="btn btn-primary">

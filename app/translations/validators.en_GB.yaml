@@ -5,3 +5,5 @@ product:
         maxLength: The name is too long.
         notBlank: The name can not be empty.
         uniqueEntity: This name is already used by an other product.
+    price:
+        positiveOrZero: The price can not be negative.

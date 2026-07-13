@@ -37,6 +37,7 @@ class Product
      * The constructor.
      * @param string $name the name.
      * @param string|null $description the description.
+     * @param int|null $price the price.
      */
     public function __construct(
         #[ORM\Column(type: Types::STRING, length: 50, unique: true)]
@@ -52,7 +53,13 @@ class Product
             max: 300,
             maxMessage: 'product.name.maxLength',
         )]
-        public ?string $description = null
+        public ?string $description = null,
+
+        #[ORM\Column(nullable: true)]
+        #[Assert\PositiveOrZero(
+            message: 'product.price.positiveOrZero',
+        )]
+        public ?int $price = null
     ) {
         $this->id = null;
     }

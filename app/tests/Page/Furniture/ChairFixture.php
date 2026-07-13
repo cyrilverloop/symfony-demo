@@ -19,7 +19,11 @@ trait ChairFixture
      */
     public function addChairFixture(): void
     {
-        $chair = new Chair('test-name', 'test-description');
+        $chair = new Chair(
+            'test-name',
+            'test-description',
+            5
+        );
 
         $entityManager = static::$kernel->getContainer()->get('doctrine')->getManager();
         $entityManager->persist($chair);

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% set loader = true %}
+
 
 {# SEO #}
 
@@ -9,7 +11,12 @@
 {# Assets #}
 
 {% block importmap %}
-    {{ importmap(['app', 'product-delete']) }}
+    {{ importmap([
+        'app',
+        'loader',
+        'product-delete',
+        'product-price-history'
+    ]) }}
 {% endblock %}
 
 
@@ -24,6 +31,49 @@
 
             <div class="card-body">
                 <p class="card-text">{{ coat.description }}</p>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Price : <strong>{{ coat.price }}&nbsp;€</strong>.</li>
+                </ul>
+
+                <div class="form-check form-switch">
+                    <input
+                        aria-controls="price_history"
+                        aria-expanded="false"
+                        data-bs-target="#price_history"
+                        data-bs-toggle="collapse"
+                        class="form-check-input"
+                        id="price_history_switch"
+                        role="switch"
+                        type="checkbox"
+                    >
+
+                    <label
+                        class="form-check-label"
+                        for="price_history_switch"
+                    >
+                        Price history
+                    </label>
+                </div>
+
+                <div
+                    class="collapse mt-1"
+                    id="price_history"
+                >
+                    <input
+                        id="price_history_url"
+                        type="hidden"
+                        value="/coats/{{ coat.id }}/price-history"
+                    />
+
+                    <button
+                        class="btn btn-outline-primary btn-sm"
+                        title="Reload price history"
+                        type="button"
+                    >
+                        Reload price history
+                    </button>
+                </div>
             </div>
 
             <div class="card-footer">

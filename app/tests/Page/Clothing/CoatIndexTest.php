@@ -66,12 +66,13 @@ final class CoatIndexTest extends WebTestCase
 
         $tableHeaders = $table->filter('tr th');
 
-        self::assertCount(4, $tableHeaders, 'There must be 4 table headers.');
+        self::assertCount(5, $tableHeaders, 'There must be 5 table headers.');
 
         self::assertSame('Id', $tableHeaders->eq(0)->text(), 'The first header must be "Id".');
         self::assertSame('Name', $tableHeaders->eq(1)->text(), 'The second header must be "Name".');
         self::assertSame('Description', $tableHeaders->eq(2)->text(), 'The third header must be "Description".');
-        self::assertSame('actions', $tableHeaders->eq(3)->text(), 'The fourth header must be "actions".');
+        self::assertSame('Price', $tableHeaders->eq(3)->text(), 'The fourth header must be "Price".');
+        self::assertSame('actions', $tableHeaders->eq(4)->text(), 'The fifth header must be "actions".');
     }
 
 
@@ -88,6 +89,7 @@ final class CoatIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextSame('h1', 'Coat index');
+        $this->assertHasTable($crawler);
 
         $coatRows = $crawler->filter('tr');
         $coatsCount = count($coatRows) - 1;
@@ -136,7 +138,7 @@ final class CoatIndexTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $coat = $crawler->filter('tr')->eq(1);
-        $coatActions = $coat->filter('td')->eq(3);
+        $coatActions = $coat->filter('td')->eq(4);
         $showLink = $coatActions->filter('a')->eq(0);
 
         self::assertSame('show', $showLink->text(), 'The text of the button must be "show".');
@@ -163,7 +165,7 @@ final class CoatIndexTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $coat = $crawler->filter('tr')->eq(1);
-        $coatActions = $coat->filter('td')->eq(3);
+        $coatActions = $coat->filter('td')->eq(4);
         $showLink = $coatActions->filter('a')->eq(1);
 
         self::assertSame('edit', $showLink->text(), 'The text of the button must be "edit".');

@@ -53,6 +53,7 @@ class ChairNewTest extends WebTestCase
         self::assertCount(1, $form, 'There must be a form to create chairs.');
         $this->assertHasAnInputForName($form->filter('#chair_name'));
         $this->assertHasAnInputForDescription($form->filter('#chair_description'));
+        $this->assertHasAnInputForPrice($form->filter('#chair_price'));
         self::assertNotEmpty($form->filter('#chair__token')->attr('value'), 'The form must have a token.');
     }
 
@@ -70,18 +71,33 @@ class ChairNewTest extends WebTestCase
         self::assertSame("30", $nameInput->attr('size'), 'The name input size must be 30.');
         self::assertSame('The name of the product.', $nameInput->attr('title'), 'The name input title must be "The name of the product.".');
         self::assertSame('text', $nameInput->attr('type'), 'The name input must be of type text.');
+        self::assertNull($nameInput->attr('value'), 'The name input must have null as a value.');
     }
 
     /**
      * The assertions for the input of the description.
      * @param \Symfony\Component\DomCrawler\Crawler $nameInput the crawler.
      */
-    private function assertHasAnInputForDescription(Crawler $nameInput): void
+    private function assertHasAnInputForDescription(Crawler $descriptionInput): void
     {
-        self::assertSame('300', $nameInput->attr('maxlength'), 'The name input maxlength must be 300.');
-        self::assertSame('chair[description]', $nameInput->attr('name'), 'The name input must be named "chair[description]".');
-        self::assertSame('A description', $nameInput->attr('placeholder'), 'The name input placeholder must be "A description".');
-        self::assertSame('The description of the product.', $nameInput->attr('title'), 'The name input title must be "The description of the product.".');
+        self::assertSame('300', $descriptionInput->attr('maxlength'), 'The description input maxlength must be 300.');
+        self::assertSame('chair[description]', $descriptionInput->attr('name'), 'The description input must be named "chair[description]".');
+        self::assertSame('A description', $descriptionInput->attr('placeholder'), 'The description input placeholder must be "A description".');
+        self::assertSame('The description of the product.', $descriptionInput->attr('title'), 'The description input title must be "The description of the product.".');
+        self::assertNull($descriptionInput->attr('value'), 'The description input must have null as a value.');
+    }
+
+    /**
+     * The assertions for the input of the price.
+     * @param \Symfony\Component\DomCrawler\Crawler $priceInput the crawler.
+     */
+    private function assertHasAnInputForPrice(Crawler $priceInput): void
+    {
+        self::assertSame('number', $priceInput->attr('type'), 'The price input maxlength must be 300.');
+        self::assertSame('chair[price]', $priceInput->attr('name'), 'The price input must be named "chair[price]".');
+        self::assertSame('1', $priceInput->attr('placeholder'), 'The price input placeholder must be "1".');
+        self::assertSame('The price of the product.', $priceInput->attr('title'), 'The price input title must be "The price of the product.".');
+        self::assertNull($priceInput->attr('value'), 'The price input must have null as a value.');
     }
 
 
@@ -98,7 +114,8 @@ class ChairNewTest extends WebTestCase
 
         $chairDatas = [
             'chair[name]' => 'test-new-name',
-            'chair[description]' => 'test-new-description'
+            'chair[description]' => 'test-new-description',
+            'chair[price]' => 10
         ];
 
         $client->submit($form, $chairDatas);
@@ -113,12 +130,17 @@ class ChairNewTest extends WebTestCase
         self::assertSame(
             'test-new-name',
             $chair->name,
-            'The new chair must be named "test-new-name".'
+            'The name of the new chair must be "test-new-name".'
         );
         self::assertSame(
             'test-new-description',
             $chair->description,
-            'The new chair must be named "test-new-description".'
+            'The description of the new chair must be "test-new-description".'
+        );
+        self::assertSame(
+            10,
+            $chair->price,
+            'The price of the new chair must be "test-new-description".'
         );
     }
 
@@ -131,7 +153,8 @@ class ChairNewTest extends WebTestCase
     {
         $chairDatas = [
             'chair[name]' => 'test-new-name',
-            'chair[description]' => 'test-new-description'
+            'chair[description]' => 'test-new-description',
+            'chair[price]' => 5
         ];
 
         $emptyStringName = $chairDatas;
@@ -143,10 +166,14 @@ class ChairNewTest extends WebTestCase
         $descriptionTooLong = $chairDatas;
         $descriptionTooLong['chair[name]'] = self::generateLongString(301);
 
+        $priceToLow = $chairDatas;
+        $priceToLow['chair[price]'] = -1;
+
         return [
             'the name is an empty string.' => [$emptyStringName],
             'the name is too long (>50 chars).' => [$nameTooLong],
-            'the description is too long (>300 chars).' => [$descriptionTooLong]
+            'the description is too long (>300 chars).' => [$descriptionTooLong],
+            'the price is too low (<0).' => [$priceToLow]
         ];
     }
 

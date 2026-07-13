@@ -16,3 +16,16 @@
 {% block importmap %}
     {{ importmap('app') }}
 {% endblock %}
+
+
+{# Body #}
+
+{% block body %}
+    {{ parent() }}
+
+    {# Si l'on a besoin du loader #}
+
+    {% if loader is defined and loader == true %}
+        {{ include('loader.html.twig', sandboxed = true, ignore_missing = false) }}
+    {% endif %}
+{% endblock %}

@@ -6,6 +6,7 @@ namespace App\Form\Product;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,6 +44,14 @@ abstract class ProductType extends AbstractType
                     'title' => 'form.description.title'
                 ],
                 'label' => 'form.description.label',
+                'required' => false
+            ])
+            ->add('price', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'form.price.placeholder',
+                    'title' => 'form.price.title'
+                ],
+                'label' => 'form.price.label',
                 'required' => false
             ])
             ->add('submit', SubmitType::class, [
